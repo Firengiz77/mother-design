@@ -29,25 +29,25 @@ class SliderController extends Controller
 
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('title', function ($row) {
-                    return $row->title;
-                })
+              
                 ->addColumn('image', function ($row) {
                     return "<img src='".asset($row->image)."' width='100px'>";
                 })
                 ->addColumn('status', function ($row) {
-                    return $row->status == 1 ? '<strong> <span class="badge bg-label-success">'. __('Active').'  </span>  </strong>' : '<strong> <span class="badge bg-label-danger">'. __('Deactive').'  </span>  </strong>' ;
-                })
+                  if($row->status == 1){
+                    return '<a href="' . route('admin.slider.status', 0) . '" > <span class="badge bg-label-success">'. __('Active').'  </span>  </a>'  ;
+                  }
+                  else{
+                    return  '<a href="' . route('admin.slider.status', 1) . '" > <span class="badge bg-label-danger">'. __('Deactive').'  </span>  </a>' ;
+               
+                  }
+                     })
 
                 ->addColumn('action', function ($row) {
                     $actionBtn = '';
                     if(Auth::user()->can('slider-update')){
                     $actionBtn .= '<a href="' . route('admin.slider.edit', $row->id) . '" class="edit btn btn-success btn-sm">Edit</a> ';
                     }
-                    if(Auth::user()->can('slider-delete')){
-                    $actionBtn .= ' <a href="' . route('admin.slider.destroy', $row->id) . '"   class="delete btn btn-danger btn-sm delete-confirm"  >Delete</a>';
-                   
-                     }
                       return $actionBtn;
                 })
                 ->rawColumns(['action','image','status'])
@@ -70,12 +70,12 @@ class SliderController extends Controller
     
             $slider = new Slider();
        
-            $slider->setTranslation('title', app()->getLocale(), $request->title);
-            $slider->setTranslation('desc', app()->getLocale(), $request->desc);
             $slider->setTranslation('link', app()->getLocale(), $request->link);
             $slider->status = $request->status;
             $slider->image = $this->crud->common_image('slider',$request,'image');
-
+            $path = $request->file('video')->store('video', ['disk' =>'my_files']);
+         
+            $slider->video = $path;
             $slider->save();
             
             $notification = [
@@ -98,15 +98,17 @@ class SliderController extends Controller
    
          $slider = Slider::where('id',$id)->first();
  
+       
             if ($request->file('image')) {
                 File::delete($slider->image);
-            $slider->image = $this->crud->common_image('slider',$request,'image');
-
+                $slider->image = $this->crud->common_image('slider',$request,'image');
             }
 
+            if ($request->file('video')) {
+              $path = $request->file('video')->store('video', ['disk' =>'my_files']);
+              $slider->video = $path;
+            }
 
-            $slider->setTranslation('title', app()->getLocale(), $request->title);
-            $slider->setTranslation('desc', app()->getLocale(), $request->desc);
             $slider->setTranslation('link', app()->getLocale(), $request->link);
             $slider->status = $request->status;
             $slider->save();
@@ -116,18 +118,16 @@ class SliderController extends Controller
                 'message' => __('Slider successfully updated'),
                 'alert-type' => 'success'
             ];
+
             return redirect()->route('admin.slider.index')->with($notification);
      
     }
 
-    public function destroy($id)
-    {
-       Slider::find($id)->delete();
+        public function status($id){
+            $slider = Slider::first();
+            $slider->status = $id;
+            $slider->save();
+            return redirect()->back();
 
-        $notification = array(
-            'message' => __('Slider successfully destroyed'),
-            'alert-type' => 'success'
-        );
-        return redirect()->route('admin.slider.index')->with($notification);
-    }
+        }
 }
