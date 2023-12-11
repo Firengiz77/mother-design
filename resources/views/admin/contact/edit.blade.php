@@ -47,15 +47,49 @@
                         @csrf
 
                         <div class="mb-3 col-md-12 ">
-                            <label for="email" class="form-label">{{ __('Email') }} :</label>
+                            <label for="email_1" class="form-label">New Business {{ __('Email') }} 1 :</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="email" name="email" 
-                              value="{{ $contact->email }}" 
+                              id="email_1" name="email_1" 
+                              value="{{ $contact->email_1 }}" 
+                            />
+                          </div>
+
+                          <div class="mb-3 col-md-12 ">
+                            <label for="email_2" class="form-label">New Business {{ __('Email') }} 2:</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="email_2" name="email_2" 
+                              value="{{ $contact->email_2 }}" 
                    
                             />
                           </div>
+
+                          <div class="mb-3 col-md-12 ">
+                            <label for="email_3" class="form-label">Talent {{ __('Email') }} 1 :</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="email_3" name="email_3" 
+                              value="{{ $contact->email_3 }}" 
+                   
+                            />
+                          </div>
+
+
+                          <div class="mb-3 col-md-12 ">
+                            <label for="email_4" class="form-label">Talent {{ __('Email') }} 2 :</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="email_4" name="email_4" 
+                              value="{{ $contact->email_4 }}" 
+                   
+                            />
+                          </div>
+
 
                           <div class="mb-3 col-md-12 ">
                             <label for="phone" class="form-label">{{ __('Phone') }} :</label>
@@ -68,13 +102,14 @@
                             />
                           </div>
                    
+                      
                           <div class="mb-3 col-md-12 ">
-                            <label for="hours" class="form-label">{{ __('Hours') }} :</label>
+                            <label for="title" class="form-label">{{ __('Title') }} :</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="hours" name="hours" 
-                              value="{{ $contact->hours }}" 
+                              id="title" name="title" 
+                              value="{{ $contact->title }}" 
                    
                             />
                           </div>
@@ -100,23 +135,6 @@
                    
                             />
                           </div>
-
-                          <div class="mb-3 col-md-12 ">
-                            <label for="voen" class="form-label">{{ __('Voen') }} :</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="voen" name="voen" 
-                              value="{{ $contact->voen }}" 
-                   
-                            />
-                          </div>
-
-                      
-
-                          
-                   
-                      
 
                                <button type="submit" class="btn btn-outline-secondary account-image-reset mb-4 mt-2">
                                  <i class="bx bx-reset d-block d-sm-none"></i>

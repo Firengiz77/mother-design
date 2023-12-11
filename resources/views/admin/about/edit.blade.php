@@ -46,38 +46,37 @@
                     <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.about.update',$about->id) }}">
                         @csrf
 
-                        <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label>{{ __('Image') }}:</label>
-                                        <input type="file" class="form-control" name="image"
-                                            onchange="ThumbnailUrl(this)" >
-                                        @error('image')
-                                            <span class="text-danger" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <img class="mb-3" src="" id="thumbnail">
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label>{{ __('Current Image') }}:</label>
-                                        <img style="width: 80px; object-fit:cover" src="{{ asset($about->image) }}"
-                                            alt="">
-                                    </div>
-                                </div>
 
-    
-                          <div class="mb-3 col-md-12 ">
-                            <label for="title" class="form-label">{{ __('Title') }} :</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="title" name="title" 
-                              value="{{ $about->title }}" 
-                   
-                            />
-                          </div>
+                  <div class="col-md-12">
+                        <div class="mb-3">
+                          <label>{{ __('thumbnail') }}:</label>
+                          <input type="file" class="form-control" name="images[]" multiple="multiple">
+                          @error('images')
+                          <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror
+                        </div>
+                        <div style="display:flex;flex-wrap: wrap;">
+                          @if($about !== null)
+                          @foreach ($about->images as $key => $images)
+                          <div class="col-md-4" style="flex-basis: 25%;margin-top:20px" >
+                                    <div class="image-box">
+                                        <img src="{{ asset('uploads/about/' . $images) }}" width="150px" height="150px" style=" box-shadow: -1px 1px 2px;" alt="">
+                                       <div id="newform24" class='a_remove2_{{$key}}'>
+                                        <button style="margin-top:10px" type="button" data_id="{{$key}}" class="a_remove3 btn btn-primary me-2" onclick="delete_images('{{route('admin.delete_images_about',$about->id)}}','{{ $key }}')"  id="{{ $key }}" >
+                                             <input type="hidden" name="current_images[]" value="{{ $images }}" id='a_remove'>
+                                                Delete
+                                           </button>
+                                          </div>
+                                    </div>
+                                     </div>
+                          @endforeach
+                          @endif
+                        </div>
+                      </div>
+
+                      
                           <div class="mb-3 col-md-12 ">
                             <label for="desc" class="form-label">{{ __('Description') }} :</label>
                             <textarea name="desc" class="form-control"  id="editor" cols="30" rows="10">  {!! $about->desc !!}</textarea>
@@ -119,7 +118,6 @@
     <script src="{{ asset('/admin/vendors/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('/admin/assets/js/cketditor.js') }}"></script>
     <script src="{{ asset('/admin/js/choise.js')}} "></script>
-   
 
     <script>
     $(document).ready(function() {
@@ -138,6 +136,76 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    function ThumbnailUrl2(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#thumbnail2').attr('src', e.target.result).width(100).height(90);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+  $('.delete-confirm').on('click', function (event) {
+      event.preventDefault();
+      const url = $(this).attr('href');
+      swal({
+          title: 'Are you sure?',
+          text: 'This record and it`s details will be permanantly deleted!',
+          icon: 'warning',
+          buttons: ["Cancel", "Yes!"],
+      }).then(function(value) {
+          if (value) {
+              window.location.href = url;
+          }
+      });
+  });
+</script>
+
+
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.0.6/dist/sweetalert2.all.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@8.0.6/dist/sweetalert2.min.css" rel="stylesheet"/>
+
+
+
+<script>
+function active2(){
+    if($('#active').val() == 1 ){
+    $('#active').val(0);
+    }
+    else{
+    $('#active').val(1);
+    }
+}
+</script>
+
+<script>
+  $(function() {
+  const events = {
+    click: 'click'
+  };
+  const $button = $('.delete-confirm');
+  $button.on(events.click, function(event) {
+
+  });
+})
+  </script>
+
+<script src="{{ asset('/admin/js/own.js') }}"></script>
+
+
 
 @endsection

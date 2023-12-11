@@ -36,12 +36,15 @@ class SocialLinkController extends Controller
                 ->addColumn('title', function ($row) {
                     return $row->title;
                 })
-                ->addColumn('icon', function ($row) {
-                    return $row->icon;
-                })
                 ->addColumn('status', function ($row) {
-                    return $row->status == 1 ? '<strong> <span class="badge bg-label-success">'. __('Active').'  </span>  </strong>' : '<strong> <span class="badge bg-label-danger">'. __('Deactive').'  </span>  </strong>' ;
-                })
+                    if($row->status == 1){
+                      return '<a href="' . route('admin.socialLink.status',$row->id) . '" > <span class="badge bg-label-success">'. __('Active').'  </span>  </a>'  ;
+                    }
+                    else{
+                      return  '<a href="' . route('admin.socialLink.status', $row->id) . '" > <span class="badge bg-label-danger">'. __('Deactive').'  </span>  </a>' ;
+                 
+                    }
+                       })
 
                 ->addColumn('action', function ($row) {
                     $actionBtn = '';
@@ -50,13 +53,11 @@ class SocialLinkController extends Controller
                     }
                     if(Auth::user()->can('socialLink-delete')){
                     $actionBtn .= ' <a href="' . route('admin.socialLink.destroy', $row->id) . '"   class="delete btn btn-danger btn-sm delete-confirm"  >Delete</a>';
-                   
                      }
                       return $actionBtn;
                 })
-                ->rawColumns(['action','icon','status'])
+                ->rawColumns(['action','status'])
                 ->make(true);
-            $data = $data->paginate(5);
         }
 
         return view('admin.socialLink.index');
@@ -80,7 +81,11 @@ class SocialLinkController extends Controller
             $social->setTranslation('title', app()->getLocale(), $request->title);
             $social->status = $request->status;
             $social->link = $request->link;
-            $social->icon = $request->icon;
+
+            if ($request->file('icon')) {
+                $social->icon = $this->crud->common_image('social',$request,'icon');
+                }
+
             $social->save();
             
             $notification = [
@@ -111,7 +116,12 @@ class SocialLinkController extends Controller
             $social->setTranslation('title', app()->getLocale(), $request->title);
             $social->link = $request->link;
             $social->status = $request->status;
-            $social->icon = $request->icon;
+   
+            if ($request->file('image')) {
+                File::delete($social->icon);
+                $social->icon = $this->crud->common_image('social',$request,'icon');
+            }
+
             $social->save();
 
             $notification = [
@@ -132,4 +142,16 @@ class SocialLinkController extends Controller
         );
         return redirect()->route('admin.socialLinks.index')->with($notification);
     }
+
+    
+    public function status($id){
+        $slider = SocialLink::findOrFail($id);
+        $slider->status = 1 ?  $slider->status = 0 : $slider->status = 1;
+        $slider->save();
+        return redirect()->back();
+
+    }
+
+
+
 }

@@ -11,18 +11,7 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
                 <div style=" display: flex;align-items: baseline;flex-direction: column;">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> {{ __('SM Link') }} </h4>
-
-              <ul class="d-flex justify-content-end">
-                                    @foreach ($all_languages as $a_language)
-                                        <li style="margin-right: 10px">
-                                            <a class="btn btn-{{ app()->getLocale() == $a_language->code ? 'danger' : 'primary' }} btn-large"
-                                                href="{{ route('locale', $a_language->code) }}">
-                                                {{ $a_language->code }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> {{ __('Setting') }} </h4>
 
                 </div>
           
@@ -43,15 +32,14 @@
                   @endif
 
 
-                    <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.socialLink.update',$social->id) }}">
+                    <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.setting.update',$setting->id) }}">
                         @csrf
 
-
-           
+                    
                         <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label>{{ __('Image') }}:</label>
-                                        <input type="file" class="form-control" name="icon"
+                                        <label>{{ __('Logo') }} 1:</label>
+                                        <input type="file" class="form-control" name="logo_1"
                                             onchange="ThumbnailUrl(this)" >
                                         @error('image')
                                             <span class="text-danger" role="alert">
@@ -64,53 +52,37 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label>{{ __('Current Image') }}:</label>
-                                        <img style="width: 80px; object-fit:cover" src="{{ asset($social->icon) }}"
+                                        <img style="width: 80px; object-fit:cover" src="{{ asset($setting->logo_1) }}"
+                                            alt="">
+                                    </div>
+                                </div>
+
+
+                                
+                        <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label>{{ __('Logo') }} 2:</label>
+                                        <input type="file" class="form-control" name="logo_2"
+                                            onchange="ThumbnailUrl(this)" >
+                                        @error('image')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <img class="mb-3" src="" id="thumbnail">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label>{{ __('Current Image') }}:</label>
+                                        <img style="width: 80px; object-fit:cover" src="{{ asset($setting->logo_2) }}"
                                             alt="">
                                     </div>
                                 </div>
 
 
 
-
-                          <div class="mb-3 col-md-12 ">
-                            <label for="title" class="form-label">{{ __('Title') }} :</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="title" name="title" 
-                              value="{{ $social->title }}" 
-                   
-                            />
-                          </div>
-                         
-
-                          <div class="mb-3 col-md-12 ">
-                            <label for="link" class="form-label">{{ __('Link') }} :</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="link" name="link" 
-                              value="{{ $social->link }}" 
-                   
-                            />
-                          </div>
-                         
-                                
-                                <div class="mb-3 col-md-12 form-check">
-                                <label class="form-label">{{ __('Status') }}:</label> <br>
-                                <input class="form-check-input" value="1" @checked($social->status == 1)   type="radio" name="status" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  {{__('Active')}}
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" value="0" @checked($social->status == 0)   type="radio" name="status" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                {{__('Deactive')}}
-                                </label>
-                           </div>
-
-
+    
 
                                <button type="submit" class="btn btn-outline-secondary account-image-reset mb-4 mt-2">
                                  <i class="bx bx-reset d-block d-sm-none"></i>

@@ -43,7 +43,7 @@
                   @endif
 
 
-                    <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.socialLink.update',$social->id) }}">
+                    <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.family.update',$family->id) }}">
                         @csrf
 
 
@@ -51,7 +51,7 @@
                         <div class="col-md-12">
                                     <div class="mb-3">
                                         <label>{{ __('Image') }}:</label>
-                                        <input type="file" class="form-control" name="icon"
+                                        <input type="file" class="form-control" name="image"
                                             onchange="ThumbnailUrl(this)" >
                                         @error('image')
                                             <span class="text-danger" role="alert">
@@ -64,7 +64,7 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label>{{ __('Current Image') }}:</label>
-                                        <img style="width: 80px; object-fit:cover" src="{{ asset($social->icon) }}"
+                                        <img style="width: 80px; object-fit:cover" src="{{ asset($family->icon) }}"
                                             alt="">
                                     </div>
                                 </div>
@@ -72,43 +72,51 @@
 
 
 
-                          <div class="mb-3 col-md-12 ">
-                            <label for="title" class="form-label">{{ __('Title') }} :</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="title" name="title" 
-                              value="{{ $social->title }}" 
-                   
-                            />
-                          </div>
-                         
+                                <div class="mb-3 col-md-12">
+                    <label for="title" class="form-label">{{ __('Title') }} :</label>
+                    <input required
+                      class="form-control"
+                      type="text"
+                      id="title" name="title"  
+                   value="{{ $family->title }}"
+                    />
+                  </div>
+                  <div class="mb-3 col-md-12">
+                    <label for="name" class="form-label">{{ __('Name') }} :</label>
+                    <input required
+                      class="form-control"
+                      type="text"
+                      id="name" name="name"  
+                      value="{{ $family->name }}"
+                    />
+                  </div>
 
-                          <div class="mb-3 col-md-12 ">
-                            <label for="link" class="form-label">{{ __('Link') }} :</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="link" name="link" 
-                              value="{{ $social->link }}" 
-                   
-                            />
-                          </div>
-                         
+                  <div class="mb-3 col-md-12">
+                    <label for="profession" class="form-label">{{ __('Profession') }} :</label>
+                    <input required
+                      class="form-control"
+                      type="text"
+                      id="profession" name="profession"  
+                      value="{{ $family->profession }}"
+                    />
+                  </div>
+
+
+                  <div class="mb-3 col-md-12">
+                    <label for="instagram" class="form-label">{{ __('Link') }} :</label>
+                    <input required
+                      class="form-control"
+                      type="text"
+                      id="instagram" name="instagram"  
+                      value="{{ $family->instagram }}"
+                    />
+                  </div>
+
                                 
-                                <div class="mb-3 col-md-12 form-check">
-                                <label class="form-label">{{ __('Status') }}:</label> <br>
-                                <input class="form-check-input" value="1" @checked($social->status == 1)   type="radio" name="status" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  {{__('Active')}}
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" value="0" @checked($social->status == 0)   type="radio" name="status" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                {{__('Deactive')}}
-                                </label>
-                           </div>
+                          <div class="mb-3 col-md-12 ">
+                            <label for="desc" class="form-label">{{ __('Description') }} :</label>
+                            <textarea name="desc" class="form-control"  id="editor" cols="30" rows="10">  {!! $family->desc !!}</textarea>
+                          </div>
 
 
 

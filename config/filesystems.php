@@ -58,9 +58,8 @@ return [
         
         'my_files' => [
             'driver' => 'local',
-            'root'   => public_path() . '/'
-         ]
-         
+            'root' => public_path('slider/video'),
+        ],
 
 
 

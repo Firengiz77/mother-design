@@ -24,10 +24,12 @@ class ContactController extends Controller
          $contact = Contact::where('id',$id)->first();
 
             $contact->setTranslation('address', app()->getLocale(), $request->address);
-            $contact->setTranslation('hours', app()->getLocale(), $request->hours);
+            $contact->setTranslation('title', app()->getLocale(), $request->title);
             $contact->phone = $request->phone;
-            $contact->email = $request->email;
-            $contact->voen = $request->voen;
+            $contact->email_1 = $request->email_1;
+            $contact->email_2 = $request->email_2;
+            $contact->email_3 = $request->email_3;
+            $contact->email_4 = $request->email_4;
             $contact->map = $request->map;
             $contact->save();
 

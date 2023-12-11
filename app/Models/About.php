@@ -10,8 +10,10 @@ use Spatie\Translatable\HasTranslations;
 class About extends Model
 {
     use HasFactory,HasTranslations;
-    public $translatable = ['title','desc'];
+    public $translatable = ['desc'];
+    protected $casts = ['images'=>'array'];
 
+    protected $fillable =['images'];
 
 
 }

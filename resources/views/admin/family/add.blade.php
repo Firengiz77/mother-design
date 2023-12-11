@@ -9,7 +9,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ __('Admin') }} /</span> {{ __('SM Link') }}</h4>
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ __('Admin') }} /</span> {{ __('Family') }}</h4>
 
       <!-- Basic Layout & Basic with Icons -->
       <div class="row">
@@ -47,7 +47,7 @@
 
           @endif
 
-          <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.socialLink.store') }}">
+          <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.family.store') }}">
             @csrf
              <div class="d-flex align-items-start align-items-sm-center gap-4">
                  <div class="container">
@@ -55,7 +55,7 @@
                  <div class="col-md-12">
                     <div class="mb-3">
                       <label>{{ __('Image') }}:</label>
-                        <input type="file" class="form-control" name="icon" 
+                        <input type="file" class="form-control" name="image" 
                          onchange="ThumbnailUrl(this)" >
                        @error('image')
                                     <span class="text-danger" role="alert">
@@ -76,32 +76,45 @@
                       placeholder="{{ __('Title') }}"
                     />
                   </div>
-
                   <div class="mb-3 col-md-12">
-                    <label for="link" class="form-label">{{ __('Link') }} :</label>
+                    <label for="name" class="form-label">{{ __('Name') }} :</label>
                     <input required
                       class="form-control"
                       type="text"
-                      id="link" name="link"  
+                      id="name" name="name"  
+                      placeholder="{{ __('Name') }}"
+                    />
+                  </div>
+
+                  <div class="mb-3 col-md-12">
+                    <label for="profession" class="form-label">{{ __('Profession') }} :</label>
+                    <input required
+                      class="form-control"
+                      type="text"
+                      id="profession" name="profession"  
+                      placeholder="{{ __('Profession') }}"
+                    />
+                  </div>
+
+
+                  <div class="mb-3 col-md-12">
+                    <label for="instagram" class="form-label">{{ __('Link') }} :</label>
+                    <input required
+                      class="form-control"
+                      type="text"
+                      id="instagram" name="instagram"  
                       placeholder="{{ __('Link') }}"
                     />
                   </div>
 
-                            <div class="mb-3 col-md-12 form-check">
-                              <label class="form-label">{{ __('Status') }}</label> <br>
-                                <input class="form-check-input" value="1" type="radio" name="status" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  {{__('Active')}}
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" value="0" type="radio" name="status" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                {{__('Deactive')}}
-                                </label>
-                           </div>
 
 
+
+
+                   <div class="mb-3 col-md-12 ">
+                            <label for="desc" class="form-label">{{ __('Description') }} :</label>
+                            <textarea name="desc" class="form-control"  id="editor" cols="30" rows="10"></textarea>
+                          </div>
 
                 
                    <button type="submit" class="btn btn-outline-secondary account-image-reset mb-4 mt-2">

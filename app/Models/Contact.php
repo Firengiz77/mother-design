@@ -10,7 +10,7 @@ class Contact extends Model
 {
     use HasFactory,HasTranslations;
 
-    public $translatable = ['address','hours'];
+    public $translatable = ['address','title'];
 
 
 

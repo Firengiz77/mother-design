@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 11, 2023 at 10:37 AM
+-- Host: 127.0.0.1
+-- Generation Time: Dec 11, 2023 at 10:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mother_design`
+-- Database: `mother-design`
 --
 
 -- --------------------------------------------------------
@@ -29,9 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `abouts` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` text NOT NULL,
-  `image` text NOT NULL,
-  `thumb_sm` text DEFAULT NULL,
+  `images` text NOT NULL,
   `desc` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -41,8 +39,8 @@ CREATE TABLE `abouts` (
 -- Dumping data for table `abouts`
 --
 
-INSERT INTO `abouts` (`id`, `title`, `image`, `thumb_sm`, `desc`, `created_at`, `updated_at`) VALUES
-(1, '{\"az\":\"Gloria Flowers\",\"en\":\"test en\"}', 'uploads/about/1784264274680569.jpg', 'uploads/about/656c76647f67241.jpg', '{\"az\":\"<p>Az\\u0259rbaycan h\\u0259diyy\\u0259 sektorunda ilk g\\u0259r&ccedil;\\u0259kl\\u0259\\u015fdir\\u0259n \\u0259n b&ouml;y&uuml;k onlayn h\\u0259diyy\\u0259 platformas\\u0131 olaraq f\\u0259aliyy\\u0259td\\u0259yik. Premium g&uuml;l, tort, \\u0259tir v\\u0259 &ccedil;\\u0259r\\u0259z sifari\\u015fl\\u0259rinizi bir onlayn platformadan verm\\u0259kl\\u0259 yana\\u015f\\u0131 kuryer vasit\\u0259siyl\\u0259 se&ccedil;diyiniz &uuml;nvana &ccedil;atd\\u0131r\\u0131lmas\\u0131n\\u0131 realla\\u015fd\\u0131r\\u0131r\\u0131q. Siz\\u0259 t\\u0259klifimiz rahatl\\u0131q, y&uuml;ks\\u0259k keyfiyy\\u0259t, m&uuml;nasib qiym\\u0259t v\\u0259 profesional komanda t\\u0259r\\u0259find\\u0259n haz\\u0131rlanm\\u0131\\u015f h\\u0259diyy\\u0259l\\u0259rdir. Sevdiyiniz &uuml;&ccedil;&uuml;n h\\u0259diyy\\u0259ni Olee-d\\u0259n al\\u0131n.<\\/p>\",\"en\":\"<p><strong>Lorem Ipsum<\\/strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\\/p>\\r\\n\\r\\n<p><strong>Lorem Ipsum<\\/strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\\/p>\\r\\n\\r\\n<p><strong>Lorem Ipsum<\\/strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\\/p>\"}', NULL, '2023-12-03 12:36:52');
+INSERT INTO `abouts` (`id`, `images`, `desc`, `created_at`, `updated_at`) VALUES
+(1, '{\"0\":\"714877397.jpeg\",\"2\":\"629941600.jpeg\"}', '{\"az\":\"<p><strong>Az\\u0259rbaycan h\\u0259diyy\\u0259 sektorunda<\\/strong> ilk g\\u0259r&ccedil;\\u0259kl\\u0259\\u015fdir\\u0259n \\u0259n b&ouml;y&uuml;k onlayn h\\u0259diyy\\u0259 platformas\\u0131 olaraq f\\u0259aliyy\\u0259td\\u0259yik. Premium g&uuml;l, tort, \\u0259tir v\\u0259 &ccedil;\\u0259r\\u0259z sifari\\u015fl\\u0259rinizi bir onlayn platformadan verm\\u0259kl\\u0259 yana\\u015f\\u0131 kuryer vasit\\u0259siyl\\u0259 se&ccedil;diyiniz &uuml;nvana &ccedil;atd\\u0131r\\u0131lmas\\u0131n\\u0131 realla\\u015fd\\u0131r\\u0131r\\u0131q. Siz\\u0259 t\\u0259klifimiz rahatl\\u0131q, y&uuml;ks\\u0259k keyfiyy\\u0259t, m&uuml;nasib qiym\\u0259t v\\u0259 profesional komanda t\\u0259r\\u0259find\\u0259n haz\\u0131rlanm\\u0131\\u015f h\\u0259diyy\\u0259l\\u0259rdir. Sevdiyiniz &uuml;&ccedil;&uuml;n h\\u0259diyy\\u0259ni Olee-d\\u0259n al\\u0131n.<\\/p>\\r\\n\\r\\n<p>Az\\u0259rbaycan h\\u0259diyy\\u0259 sektorunda ilk g\\u0259r&ccedil;\\u0259kl\\u0259\\u015fdir\\u0259n \\u0259n b&ouml;y&uuml;k onlayn h\\u0259diyy\\u0259 platformas\\u0131 olaraq f\\u0259aliyy\\u0259td\\u0259yik. Premium g&uuml;l, tort, \\u0259tir v\\u0259 &ccedil;\\u0259r\\u0259z sifari\\u015fl\\u0259rinizi bir onlayn platformadan verm\\u0259kl\\u0259 yana\\u015f\\u0131 kuryer vasit\\u0259siyl\\u0259 se&ccedil;diyiniz &uuml;nvana &ccedil;atd\\u0131r\\u0131lmas\\u0131n\\u0131 realla\\u015fd\\u0131r\\u0131r\\u0131q. Siz\\u0259 t\\u0259klifimiz rahatl\\u0131q, y&uuml;ks\\u0259k keyfiyy\\u0259t, m&uuml;nasib qiym\\u0259t v\\u0259 profesional komanda t\\u0259r\\u0259find\\u0259n haz\\u0131rlanm\\u0131\\u015f h\\u0259diyy\\u0259l\\u0259rdir. Sevdiyiniz &uuml;&ccedil;&uuml;n h\\u0259diyy\\u0259ni Olee-d\\u0259n al\\u0131n.<\\/p>\",\"en\":\"<p><strong>Lorem Ipsum<\\/strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\\/p>\\r\\n\\r\\n<p><strong>Lorem Ipsum<\\/strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\\/p>\\r\\n\\r\\n<p><strong>Lorem Ipsum<\\/strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\\/p>\"}', NULL, '2023-12-11 15:42:01');
 
 -- --------------------------------------------------------
 
@@ -53,10 +51,12 @@ INSERT INTO `abouts` (`id`, `title`, `image`, `thumb_sm`, `desc`, `created_at`, 
 CREATE TABLE `contacts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `phone` text NOT NULL,
-  `email` text NOT NULL,
-  `hours` text NOT NULL,
-  `voen` text NOT NULL,
+  `email_1` text DEFAULT NULL,
+  `email_2` text DEFAULT NULL,
+  `email_3` text DEFAULT NULL,
+  `email_4` text DEFAULT NULL,
   `address` text NOT NULL,
+  `title` text NOT NULL,
   `map` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -66,8 +66,8 @@ CREATE TABLE `contacts` (
 -- Dumping data for table `contacts`
 --
 
-INSERT INTO `contacts` (`id`, `phone`, `email`, `hours`, `voen`, `address`, `map`, `created_at`, `updated_at`) VALUES
-(1, '(+994) 050 7111797', 'testaz@gmail.com', '{\"az\":\"12:00 - 14:00 as\",\"ru\":\"7:00 - 00:00\"}', '0708884582az', '{\"az\":\"Bakuaz, Azerbaijan\",\"ru\":\"\\u0410\\u0437\\u0435\\u0440\\u0431\\u0430\\u0439\\u0434\\u0436\\u0430\\u043d, \\u0411\\u0430\\u043a\\u0443. \\u041d\\u0430\\u0440\\u0438\\u043c\\u0430\\u043d\\u043e\\u0432\\u0441\\u043a\\u0438\\u0439 \\u0440-\\u043d, \\u043f\\u0440-\\u0442 \\u0424\\u0430\\u0442\\u0430\\u043b\\u0438 \\u0425\\u0430\\u043d \\u0425\\u043e\\u0439\\u0441\\u043a\\u0438\\u0439 144\"}', 'https://maps.app.goo.gl/QJb7x83k9Ktp5d6t7', NULL, '2023-12-07 11:19:53');
+INSERT INTO `contacts` (`id`, `phone`, `email_1`, `email_2`, `email_3`, `email_4`, `address`, `title`, `map`, `created_at`, `updated_at`) VALUES
+(1, '+994 70 201 15 42', 'narmin@agillinagillar.com', 'ilham@agillinagillar.com', 'agilli@agillinagillar.com', 'gunay@agillinagillar.com', '{\"az\":\"Kovkeb Safaraliyeva 16E Time Business Center Nizami district\",\"ru\":\"\\u0410\\u0437\\u0435\\u0440\\u0431\\u0430\\u0439\\u0434\\u0436\\u0430\\u043d, \\u0411\\u0430\\u043a\\u0443. \\u041d\\u0430\\u0440\\u0438\\u043c\\u0430\\u043d\\u043e\\u0432\\u0441\\u043a\\u0438\\u0439 \\u0440-\\u043d, \\u043f\\u0440-\\u0442 \\u0424\\u0430\\u0442\\u0430\\u043b\\u0438 \\u0425\\u0430\\u043d \\u0425\\u043e\\u0439\\u0441\\u043a\\u0438\\u0439 144\"}', '{\"az\":\"Baku, Azerbaijan\"}', 'https://maps.app.goo.gl/QJb7x83k9Ktp5d6t7', NULL, '2023-12-11 16:07:56');
 
 -- --------------------------------------------------------
 
@@ -84,6 +84,32 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `families`
+--
+
+CREATE TABLE `families` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` text NOT NULL,
+  `title` text NOT NULL,
+  `profession` text NOT NULL,
+  `image` text NOT NULL,
+  `instagram` text NOT NULL,
+  `desc` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `families`
+--
+
+INSERT INTO `families` (`id`, `name`, `title`, `profession`, `image`, `instagram`, `desc`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '{\"az\":\"Bill Gates\"}', '{\"az\":\"Honor of\"}', '{\"az\":\"Teacher\"}', 'uploads/family/1785021759085794.png', 'instagram.com', '{\"az\":\"<p>google.comgoogle.comgoogle.comgoogle.comgoogle.com<\\/p>\\r\\n\\r\\n<p>google.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.comgoogle.com<\\/p>\"}', '2023-12-11 17:16:45', '2023-12-11 17:16:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -156,7 +182,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2023_11_24_195002_create_attributes_table', 9),
 (21, '2023_11_27_115522_create_options_table', 10),
 (22, '2023_11_28_192641_create_carts_table', 11),
-(23, '2023_12_04_195508_create_messages_table', 12);
+(23, '2023_12_04_195508_create_messages_table', 12),
+(24, '2023_12_11_202556_create_families_table', 13);
 
 -- --------------------------------------------------------
 
@@ -248,7 +275,11 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (54, 'slider-list', 'web', '2023-11-19 09:04:20', '2023-11-19 09:04:39'),
 (55, 'slider-create', 'web', '2023-11-19 09:04:29', '2023-11-19 09:04:29'),
 (56, 'slider-update', 'web', '2023-11-19 09:04:45', '2023-11-19 09:04:45'),
-(57, 'slider-status', 'web', '2023-11-19 09:04:51', '2023-12-11 03:39:58');
+(57, 'slider-status', 'web', '2023-11-19 09:04:51', '2023-12-11 03:39:58'),
+(77, 'family-list', 'web', '2023-12-11 16:38:09', '2023-12-11 16:38:09'),
+(78, 'family-create', 'web', '2023-12-11 16:38:13', '2023-12-11 16:38:39'),
+(79, 'family-delete', 'web', '2023-12-11 16:38:22', '2023-12-11 16:38:22'),
+(80, 'family-update', 'web', '2023-12-11 16:38:44', '2023-12-11 16:38:44');
 
 -- --------------------------------------------------------
 
@@ -346,7 +377,35 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (56, 1),
 (56, 5),
 (57, 1),
-(57, 5);
+(57, 5),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE `site_settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `main_logo` text NOT NULL,
+  `logo_1` text NOT NULL,
+  `thumb_logo_1` text DEFAULT NULL,
+  `logo_2` text NOT NULL,
+  `thumb_logo_2` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `site_settings`
+--
+
+INSERT INTO `site_settings` (`id`, `main_logo`, `logo_1`, `thumb_logo_1`, `logo_2`, `thumb_logo_2`, `created_at`, `updated_at`) VALUES
+(1, 'uploads/setting/1784376092440326.png', 'uploads/setting/1785017790976269.svg', 'uploads/setting/6571a806d073267.png', 'uploads/setting/1785017790992327.svg', 'uploads/setting/6571a806dc3f793.jpg', NULL, '2023-12-11 16:13:41');
 
 -- --------------------------------------------------------
 
@@ -356,8 +415,8 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 
 CREATE TABLE `sliders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `image` text NOT NULL,
-  `video` text NOT NULL,
+  `image` text DEFAULT NULL,
+  `video` text DEFAULT NULL,
   `link` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -370,7 +429,7 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `image`, `video`, `link`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'uploads/slider/1784620105269859.png', '', '{\"az\":\"https:\\/\\/test.gloriaflowers.az\\/category\\/17\"}', 1, '2023-11-23 15:04:45', '2023-12-11 03:46:01', NULL);
+(1, 'uploads/slider/1785014104513564.png', 'video/oStvZMyI6nZuCWRYu8k36oc40gCVlYACaL8evT89.mov', '{\"az\":\"https:\\/\\/test.gloriaflowers.az\\/category\\/17\",\"en\":\"test\"}', 0, '2023-11-23 15:04:45', '2023-12-11 15:21:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -394,8 +453,8 @@ CREATE TABLE `social_links` (
 --
 
 INSERT INTO `social_links` (`id`, `title`, `icon`, `link`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '{\"az\":\"Facebook\",\"ru\":\"Instagram\"}', 'fab fa-instagram', 'https://www.instagram.com/gloriagarden.az/', 1, '2023-11-11 19:17:02', '2023-12-07 11:24:58', NULL),
-(2, '{\"az\":\"facebook\"}', 'fab fa-facebook', 'https://www.instagram.com/gloriaflowers_az/', 1, '2023-11-11 19:20:02', '2023-12-02 08:30:34', NULL),
+(1, '{\"az\":\"Instagram\",\"ru\":\"Instagram\"}', 'fab fa-instagram', 'https://www.instagram.com/gloriagarden.az/', 0, '2023-11-11 19:17:02', '2023-12-11 16:25:03', NULL),
+(2, '{\"az\":\"Telegram\"}', 'fab fa-facebook', 'https://www.instagram.com/gloriaflowers_az/', 0, '2023-11-11 19:20:02', '2023-12-11 16:25:05', NULL),
 (3, '{\"az\":\"Linkedin\"}', 'uploads/socialLinks/1784061475961737.jpg', '#', 1, '2023-12-01 06:53:28', '2023-12-02 08:29:18', '2023-12-02 08:29:18'),
 (4, '{\"az\":\"Instagram\"}', 'fab fa-instagram', 'https://www.instagram.com/gloriaflowers_az/', 1, '2023-12-02 08:30:09', '2023-12-02 08:30:09', NULL);
 
@@ -456,6 +515,12 @@ ALTER TABLE `contacts`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `families`
+--
+ALTER TABLE `families`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `languages`
@@ -519,6 +584,12 @@ ALTER TABLE `role_has_permissions`
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
+-- Indexes for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
@@ -560,6 +631,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `families`
+--
+ALTER TABLE `families`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
@@ -569,13 +646,13 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -590,10 +667,16 @@ ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `social_links`

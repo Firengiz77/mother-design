@@ -29,7 +29,7 @@
               </a>
             </li>
 
-            @can(['setting-list'])
+      
             <li class="menu-item @if(Route::is('admin.roles') || Route::is('admin.roles')) active @endif">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="fa fa-sliders menu-icon" aria-hidden="true"></i>
@@ -37,6 +37,15 @@
               </a>
               <ul class="menu-sub">
           
+              @can('contact-list')
+                <li class="menu-item">
+                  <a href="{{route('admin.setting.edit',1)}}" class="menu-link">
+                  <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                    <div data-i18n="Contact"> {{ __('Site Settings') }} </div>
+                  </a>
+                </li>
+                @endcan
+
                 @can('contact-list')
                 <li class="menu-item">
                   <a href="{{route('admin.contact.edit',1)}}" class="menu-link">
@@ -62,15 +71,20 @@
                 </li>
                 @endcan
 
-
-
               </ul>
             </li>
-            @endcan
+      
 
 
 
-
+            @can('family-list')
+                <li class="menu-item">
+                  <a href="{{route('admin.family.index')}}" class="menu-link">
+                  <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                    <div data-i18n="Family"> {{ __('Family') }} </div>
+                  </a>
+                </li>
+                @endcan
 
             @can(['role-list','permission-list'])
             <li class="menu-item @if(Route::is('admin.roles') || Route::is('admin.roles')) active @endif">

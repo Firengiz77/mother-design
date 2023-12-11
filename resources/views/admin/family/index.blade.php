@@ -7,20 +7,22 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
             <div style="display: flex;align-items: baseline;flex-direction: row;justify-content: space-between;">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ __('Admin') }} /</span> {{ __('Slider') }} </h4>
-             
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ __('Admin') }} /</span> {{ __('Family') }} </h4>
+              @can('family-create')
+              <a class="btn btn-success" href="{{ route('admin.family.create') }}">{{ __('Family') }}   {{__('Create')}}  </a>
+              @endcan
           </div>
               <!-- Basic Bootstrap Table -->
               <div class="card">
-                <h5 class="card-header">{{ __('Slider') }} </h5>
+                <h5 class="card-header">{{ __('Family') }} </h5>
                 
                 <div class="table-responsive text-nowrap">
                   <table  id="dataTable"  class="table table-striped " style="width:100%">
                     <thead>
                       <tr>
                         <th>ID</th>
+                        <th>{{ __('Name') }} </th>  
                         <th>{{ __('Image') }} </th>
-                        <th>{{ __('Status') }} </th>
                         <th>{{ __('Action') }}</th>
                       </tr>
                     </thead>
@@ -34,6 +36,8 @@
               <hr class="my-5" />
             </div>
             <!-- / Content -->
+
+      
 
             <div class="content-backdrop fade"></div>
           </div>
@@ -56,7 +60,7 @@
 <script src="{{ asset('app/assets/js/vendor/dataTables.keyTable.min.js') }}"></script>
 <script src="{{ asset('app/assets/js/vendor/dataTables.select.min.js') }}"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
     $(function () {
           var table = $('#dataTable').DataTable({
             paging: true,
@@ -65,11 +69,11 @@
         searching: true,
         recordsFiltered : 10,
         ordering: true,
-              ajax: "{{ route('admin.slider.index') }}",
+              ajax: "{{ route('admin.family.index') }}",
               columns: [
                 {data: 'id', name: 'id'},
+                  {data: 'name', name: 'name'},
                   {data: 'image', name: 'image'},
-                  {data: 'status', name: 'status'},
                   {data: 'action', name: 'action'},
               ]
           });

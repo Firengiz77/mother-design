@@ -72,10 +72,13 @@ class SliderController extends Controller
        
             $slider->setTranslation('link', app()->getLocale(), $request->link);
             $slider->status = $request->status;
+            if ($request->file('image')) {
             $slider->image = $this->crud->common_image('slider',$request,'image');
+            }
+            if ($request->file('video')) {
             $path = $request->file('video')->store('video', ['disk' =>'my_files']);
-         
             $slider->video = $path;
+            }
             $slider->save();
             
             $notification = [
@@ -112,7 +115,6 @@ class SliderController extends Controller
             $slider->setTranslation('link', app()->getLocale(), $request->link);
             $slider->status = $request->status;
             $slider->save();
-
           
             $notification = [
                 'message' => __('Slider successfully updated'),

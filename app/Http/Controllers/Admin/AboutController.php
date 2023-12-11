@@ -12,7 +12,7 @@ use DataTables;
 use Auth;
 use App\Http\Requests\AboutRequest;
 use App\Helpers\FileRepository;
-
+use App\Helpers\FileManager;
 
 class AboutController extends Controller
 {
@@ -39,19 +39,22 @@ class AboutController extends Controller
    
          $about = About::where('id',$id)->first();
  
-            if ($request->file('image')) {
-                File::delete($about->image);
-            $about->image = $this->crud->common_image('about',$request,'image');
+          
+         $data = $request->all();
+         $data['images'] = $about->images ?? [];
+         if ($request->hasFile('images')) {
+             if($request->has('images')){
+                 foreach ($request->file('images') as $key => $file) {
+                     array_push($data['images'], FileManager::fileUpload($file, 'about'));
+                 }
+             }
+             $about->images = $data['images'];
+         }
 
-            }
-
-
-            $about->setTranslation('title', app()->getLocale(), $request->title);
             $about->setTranslation('desc', app()->getLocale(), $request->desc);
+            $about->images = $data['images'];
             $about->save();
 
-            $about->thumb_sm = $this->filerepo->save($about->image,'about',[400,400]);
-            $about->save();
             
             $notification = [
                 'message' => __('About successfully updated'),
@@ -60,4 +63,22 @@ class AboutController extends Controller
             return redirect()->route('admin.about.edit',1)->with($notification);
      
     }
+
+
+    public function delete_images_photos($id, Request $request){
+        $key = $request->key;
+        $data = $request->all();
+        
+        $fullImgPath = storage_path("uploads/about/$key.jpg");
+        $product = About::find($id);
+        $images = $product->images;
+        unset($images[$key]);
+        $product->update([
+            'images'=>$images,
+        ]);
+     return response()->json(['success'=>true,'images'=>$product->images]);
+    }
+
+
+
 }
