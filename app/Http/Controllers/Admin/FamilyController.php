@@ -40,6 +40,10 @@ class FamilyController extends Controller
                     if(Auth::user()->can('family-update')){
                     $actionBtn .= '<a href="' . route('admin.family.edit', $row->id) . '" class="edit btn btn-success btn-sm">Edit</a> ';
                     }
+                    if(Auth::user()->can('family-delete')){
+                        $actionBtn .= ' <a href="' . route('admin.familt.destroy', $row->id) . '"   class="delete btn btn-danger btn-sm delete-confirm"  >Delete</a>';
+                    }
+
                       return $actionBtn;
                 })
                 ->rawColumns(['action','image','status'])
@@ -62,7 +66,6 @@ class FamilyController extends Controller
     
             $family = new Family();
        
-            $family->setTranslation('title', app()->getLocale(), $request->title);
             $family->setTranslation('name', app()->getLocale(), $request->name);
             $family->setTranslation('profession', app()->getLocale(), $request->profession);
             $family->setTranslation('desc', app()->getLocale(), $request->desc);
@@ -96,7 +99,6 @@ class FamilyController extends Controller
                 $family->image = $this->crud->common_image('family',$request,'image');
             }
 
-            $family->setTranslation('title', app()->getLocale(), $request->title);
             $family->setTranslation('name', app()->getLocale(), $request->name);
             $family->setTranslation('profession', app()->getLocale(), $request->profession);
             $family->setTranslation('desc', app()->getLocale(), $request->desc);

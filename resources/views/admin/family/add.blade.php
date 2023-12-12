@@ -67,15 +67,7 @@
                  </div>
                   
 
-                   <div class="mb-3 col-md-12">
-                    <label for="title" class="form-label">{{ __('Title') }} :</label>
-                    <input required
-                      class="form-control"
-                      type="text"
-                      id="title" name="title"  
-                      placeholder="{{ __('Title') }}"
-                    />
-                  </div>
+                
                   <div class="mb-3 col-md-12">
                     <label for="name" class="form-label">{{ __('Name') }} :</label>
                     <input required

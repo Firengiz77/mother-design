@@ -56,7 +56,7 @@
                 @endcan
                 @can('about-list')
                 <li class="menu-item">
-                  <a href="{{route('admin.about.edit',1)}}" class="menu-link">
+                  <a href="{{route('admin.about.index')}}" class="menu-link">
                   <i class="fa fa-file-text-o menu-icon" aria-hidden="true"></i>
                     <div data-i18n="About"> {{ __('About') }} </div>
                   </a>
@@ -85,6 +85,18 @@
                   </a>
                 </li>
                 @endcan
+
+                
+                @can('word-list')
+                <li class="menu-item">
+                  <a href="{{route('admin.word.index')}}" class="menu-link">
+                  <i class="fa fa-file-text-o menu-icon" aria-hidden="true"></i>
+                    <div data-i18n="Word"> {{ __('Word') }} </div>
+                  </a>
+                </li>
+                @endcan
+
+
 
             @can(['role-list','permission-list'])
             <li class="menu-item @if(Route::is('admin.roles') || Route::is('admin.roles')) active @endif">

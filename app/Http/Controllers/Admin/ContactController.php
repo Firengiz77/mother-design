@@ -6,11 +6,18 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
+use App\Helpers\Crud;
 
 class ContactController extends Controller
 {
 
+    protected $crud;
+    
+    public function __construct(Crud $crud)
+    {
+        $this->crud = $crud;
+    }
   
     public function edit()
     {
@@ -22,6 +29,13 @@ class ContactController extends Controller
     {
    
          $contact = Contact::where('id',$id)->first();
+
+
+         if($request->file('image')) {
+            File::delete($contact->image);
+            $contact->image = $this->crud->common_image('contact',$request,'image');
+         }
+
 
             $contact->setTranslation('address', app()->getLocale(), $request->address);
             $contact->setTranslation('title', app()->getLocale(), $request->title);

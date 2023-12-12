@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\FamilyController;
+use App\Http\Controllers\Admin\WordController;
 
 
 
@@ -35,9 +36,9 @@ Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function ()
     Route::get('permissions/destroy/{id}',[PermissionsController::class,'destroy'])->name('permissions.destroy');
 
     // about routes
+    Route::resource('about', AboutController::class);
     Route::post('about/update/{id}', [AboutController::class,'update'])->name('about.update');
-    Route::get('about/edit/{id}',[AboutController::class,'edit'])->name('about.edit');
-    Route::post('/about/delete_images/{id}',[AboutController::class,'delete_images_photos'])->name('delete_images_about');
+    Route::get('about/destroy/{id}',[AboutController::class,'destroy'])->name('about.destroy');
 
       // social media links  routes
       Route::resource('socialLink', SocialLinkController::class);
@@ -67,4 +68,12 @@ Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function ()
          Route::get('family/destroy/{id}',[FamilyController::class,'destroy'])->name('family.destroy');
     
      
+            // word routes
+    Route::resource('word', WordController::class);
+    Route::post('word/update/{id}', [WordController::class,'update'])->name('word.update');
+    Route::get('word/destroy/{id}',[WordController::class,'destroy'])->name('word.destroy');
+
+
+
+
 });

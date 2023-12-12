@@ -10,6 +10,6 @@ class Family extends Model
 {
     use HasFactory,SoftDeletes,HasTranslations;
 
-    public $translatable = ['title','name','profession','desc'];
+    public $translatable = ['name','profession','desc'];
 
 }

@@ -8,60 +8,34 @@ use App\Models\About;
 use App\Models\Slider;
 use App\Models\Attribute;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Family;
+use App\Models\Word;
 
 class MainController extends Controller
 {
    
-
-
     public function index()
     {
-        $sliders = Slider::isActive()->get();
-        $products = Product::isActive()->get();
-        $blog = Blog::isActive()->orderBy('id', 'desc')->first();
-        $banner = Banner::orderBy('id', 'desc')->first();
-        $categories = Category::isActive()->where('parent_id', '!=', 0)->get();
-        $about = About::first();
-        $services = Service::get();
-        return view('front.index', compact('sliders', 'products', 'blog', 'banner', 'categories', 'about', 'services'));
+        $slider = Slider::isActive()->first();
+        return view('front.pages.index', compact('slider'));
     }
 
-    public function productSingle($category_id, $id)
-    {
-        $product = Product::with('getAttributeProduct')->findOrFail($id);
-        return view('front.product.single', compact('product'));
-    }
-
-    public function blog()
-    {
-        $blogs = Blog::get();
-        return view('front.blog.index', compact('blogs'));
-    }
-
-    public function blogSingle($slug)
-    {
-        $blog = Blog::IsSlug($slug)->first();
-        $blogs = Blog::get();
-        $tags = Tag::get();
-
-        return view('front.blog.single', compact('blog', 'blogs', 'tags'));
-    }
+   
 
     public function aboutUs()
     {
-        $about = About::first();
-        $banners = Banner::where('status', 1)->get();
-        return view('front.about.index', compact('about', 'banners'));
+        $about = About::get();
+        return view('front.pages.about', compact('about'));
     }
 
     public function contact(){
-        return view('front.contact.index');
+
+        return view('front.pages.contact');
     }
 
-
-    public function allProducts(){
-        $products = Product::orderBy('id','desc')->get();
-        return view('front.product.index',compact('products'));
+    public function family(){
+        $family = Family::get();
+        return view('front.pages.family',compact('family'));
     }
 
 
@@ -99,14 +73,6 @@ class MainController extends Controller
     }
 
 
-
-    public function category($id)
-    {
-        $products = Product::take(6)->get();
-        $category = Category::with('getProducts')->findOrFail($id);
-        $attribute = Attribute::get();
-        return view('front.category.index', compact('category', 'products', 'attribute'));
-    }
     
 
 

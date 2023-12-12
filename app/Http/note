@@ -1,5 +1,6 @@
 MOTHER-DESIGN
 12.11.2023
+
 Admin panel:
 Slider +
 About  +
@@ -7,14 +8,23 @@ Contact +
 site-setting : for logo +
 Social-links +
 Family +
-Sliderdeki video yeri editde gorunsun
-Headerdeki deyisken yazilar -> deqiqlesdir
+Sliderdeki video yeri editde gorunsun +
+Headerdeki deyisken yazilar -> singlede ferqli olacaq bir dene +
+
+Our Works bolmesi -> attribute kimi sekil yerleri elave olunmalidir
+Lang json
 
 
 Front:
-Header
-Footer
-Slider
-About
-Contact
-Family
+Header +
+Footer +
+About +
+Contact +
+Family +
+Soz yerlerinin qurulmasi +
+
+Slider +
+Our works yeri index
+single page
+Lang json
+

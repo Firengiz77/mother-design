@@ -136,6 +136,33 @@
                             />
                           </div>
 
+
+
+
+                        <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label>{{ __('Image') }}:</label>
+                                        <input type="file" class="form-control" name="image"
+                                            onchange="ThumbnailUrl(this)" >
+                                        @error('image')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <img class="mb-3" src="" id="thumbnail">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label>{{ __('Current Image') }}:</label>
+                                        <img style="width: 80px; object-fit:cover" src="{{ asset($contact->image) }}"
+                                            alt="">
+                                    </div>
+                                </div>
+
+
+
+
                                <button type="submit" class="btn btn-outline-secondary account-image-reset mb-4 mt-2">
                                  <i class="bx bx-reset d-block d-sm-none"></i>
                                  <span class="d-none d-sm-block">{{ __('Update') }}</span>
