@@ -86,6 +86,17 @@
                 </li>
                 @endcan
 
+                @can('work-list')
+                <li class="menu-item">
+                  <a href="{{route('admin.work.index')}}" class="menu-link">
+                  <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                    <div data-i18n="Work"> {{ __('Work') }} </div>
+                  </a>
+                </li>
+                @endcan
+                
+
+
                 
                 @can('word-list')
                 <li class="menu-item">

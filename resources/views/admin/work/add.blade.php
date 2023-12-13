@@ -9,7 +9,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ __('Admin') }} /</span> {{ __('Slider') }}</h4>
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ __('Admin') }} /</span> {{ __('Work') }}</h4>
 
       <!-- Basic Layout & Basic with Icons -->
       <div class="row">
@@ -47,7 +47,7 @@
 
           @endif
 
-          <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.slider.store') }}">
+          <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.work.store') }}">
             @csrf
              <div class="d-flex align-items-start align-items-sm-center gap-4">
                  <div class="container">
@@ -59,6 +59,7 @@
                       <option value="2">Video</option>
                     </select>
                   </div>
+
 
                  <div class="col-md-12">
                     <div class="mb-3">
@@ -74,34 +75,32 @@
                            <img class="mb-3" src="" id="thumbnail">
                  </div>
                  
-               
-                 
 
+             
                   <div class="mb-3 col-md-12 ">
-                    <label for="link" class="form-label"> {{ __('Link') }} :</label>
+                    <label for="name" class="form-label"> {{ __('Name') }} :</label>
                     <input
                       class="form-control"
                       type="text"
-                      id="link" name="link"  
-                      placeholder="{{ __('Link') }} "
+                      id="name" name="name"  
+                      placeholder="{{ __('Name') }} "
                     />
                   </div>
 
+                  <div class="mb-3 col-md-12 ">
+                    <label for="title" class="form-label"> {{ __('Title') }} :</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      id="title" name="title"  
+                      placeholder="{{ __('Title') }} "
+                    />
+                  </div>
 
-                            <div class="mb-3 col-md-12 form-check">
-                              <label class="form-label">{{ __('Status') }}</label> <br>
-                                <input class="form-check-input" value="1" type="radio" name="status" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  {{__('Active')}}
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" value="0" type="radio" name="status" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                {{__('Deactive')}}
-                                </label>
-                           </div>
-
+                  <div class="mb-3 col-md-12 ">
+                            <label for="desc" class="form-label">{{ __('Description') }} :</label>
+                            <textarea name="desc" class="form-control"  id="editor" cols="30" rows="10"></textarea>
+                          </div>
 
 
                 

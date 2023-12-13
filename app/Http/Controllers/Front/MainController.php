@@ -10,6 +10,7 @@ use App\Models\Attribute;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Family;
 use App\Models\Word;
+use App\Models\Work;
 
 class MainController extends Controller
 {
@@ -17,7 +18,8 @@ class MainController extends Controller
     public function index()
     {
         $slider = Slider::isActive()->first();
-        return view('front.pages.index', compact('slider'));
+        $works = Work::get();
+        return view('front.pages.index', compact('slider','works'));
     }
 
    
@@ -56,6 +58,13 @@ class MainController extends Controller
               
         }
     }
+
+    public function singleWork()
+    {
+        $slider = Slider::isActive()->first();
+        return view('front.pages.index', compact('slider'));
+    }
+
 
 
     public function sendMessage(Request $request){

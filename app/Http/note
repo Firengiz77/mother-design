@@ -10,9 +10,14 @@ Social-links +
 Family +
 Sliderdeki video yeri editde gorunsun +
 Headerdeki deyisken yazilar -> singlede ferqli olacaq bir dene +
+Our Works bolmesi +
+Slider yerini type ile isle +
 
-Our Works bolmesi -> attribute kimi sekil yerleri elave olunmalidir
+sekil ve video ucun elave atribut kimi bolme
+
 Lang json
+Iconlar
+
 
 
 Front:
@@ -22,9 +27,10 @@ About +
 Contact +
 Family +
 Soz yerlerinin qurulmasi +
+Slider  +
+Our works yeri index +
 
-Slider +
-Our works yeri index
+
 single page
 Lang json
 

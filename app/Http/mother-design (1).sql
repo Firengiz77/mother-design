@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 12, 2023 at 09:01 AM
+-- Host: 127.0.0.1
+-- Generation Time: Dec 13, 2023 at 09:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mother_design`
+-- Database: `mother-design`
 --
 
 -- --------------------------------------------------------
@@ -185,7 +185,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2023_11_28_192641_create_carts_table', 11),
 (23, '2023_12_04_195508_create_messages_table', 12),
 (24, '2023_12_11_202556_create_families_table', 13),
-(25, '2023_12_12_074404_create_words_table', 14);
+(25, '2023_12_12_074404_create_words_table', 14),
+(26, '2023_12_13_182931_create_works_table', 15),
+(27, '2023_12_13_194357_create_work_attributes_table', 16);
 
 -- --------------------------------------------------------
 
@@ -288,7 +290,11 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (84, 'word-list', 'web', '2023-12-12 03:50:29', '2023-12-12 03:50:29'),
 (85, 'word-create', 'web', '2023-12-12 03:50:37', '2023-12-12 03:50:37'),
 (86, 'word-update', 'web', '2023-12-12 03:50:44', '2023-12-12 03:50:44'),
-(87, 'word-delete', 'web', '2023-12-12 03:50:54', '2023-12-12 03:50:54');
+(87, 'word-delete', 'web', '2023-12-12 03:50:54', '2023-12-12 03:50:54'),
+(88, 'work-create', 'web', '2023-12-13 15:14:18', '2023-12-13 15:14:18'),
+(89, 'work-list', 'web', '2023-12-13 15:14:25', '2023-12-13 15:14:25'),
+(90, 'work-update', 'web', '2023-12-13 15:14:32', '2023-12-13 15:14:32'),
+(91, 'work-delete', 'web', '2023-12-13 15:14:39', '2023-12-13 15:14:39');
 
 -- --------------------------------------------------------
 
@@ -397,7 +403,11 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (84, 1),
 (85, 1),
 (86, 1),
-(87, 1);
+(87, 1),
+(88, 1),
+(89, 1),
+(90, 1),
+(91, 1);
 
 -- --------------------------------------------------------
 
@@ -431,10 +441,10 @@ INSERT INTO `site_settings` (`id`, `main_logo`, `logo_1`, `thumb_logo_1`, `logo_
 
 CREATE TABLE `sliders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `image` text DEFAULT NULL,
-  `video` text DEFAULT NULL,
+  `file` text DEFAULT NULL,
   `link` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
+  `type` int(11) NOT NULL COMMENT '1-image,2 - video/gif',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -444,8 +454,8 @@ CREATE TABLE `sliders` (
 -- Dumping data for table `sliders`
 --
 
-INSERT INTO `sliders` (`id`, `image`, `video`, `link`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'uploads/slider/1785014104513564.png', 'video/oStvZMyI6nZuCWRYu8k36oc40gCVlYACaL8evT89.mov', '{\"az\":\"https:\\/\\/test.gloriaflowers.az\\/category\\/17\",\"en\":\"test\"}', 1, '2023-11-23 15:04:45', '2023-12-12 03:59:33', NULL);
+INSERT INTO `sliders` (`id`, `file`, `link`, `status`, `type`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'uploads/slider/1785014104513564.png', '{\"az\":\"https:\\/\\/test.gloriaflowers.az\\/category\\/17\",\"en\":\"test\"}', 1, 1, '2023-11-23 15:04:45', '2023-12-13 16:02:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -530,6 +540,50 @@ INSERT INTO `words` (`id`, `title`, `created_at`, `updated_at`) VALUES
 (1, '{\"en\":\"Salam\"}', '2023-12-12 03:51:13', '2023-12-12 03:51:13'),
 (2, '{\"en\":\"Necesiz\"}', '2023-12-12 03:51:17', '2023-12-12 03:51:17'),
 (3, '{\"en\":\"Hello 2\"}', '2023-12-12 03:51:21', '2023-12-12 03:51:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `works`
+--
+
+CREATE TABLE `works` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` text NOT NULL,
+  `title` text NOT NULL,
+  `file` text NOT NULL,
+  `type` int(11) NOT NULL COMMENT '1-image,2-video',
+  `desc` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `works`
+--
+
+INSERT INTO `works` (`id`, `name`, `title`, `file`, `type`, `desc`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '{\"en\":\"Name 1 e e\"}', '{\"en\":\"title 1e\"}', 'uploads/work/1785196492691492.gif', 1, '{\"en\":\"<p>Name 1<\\/p>\\r\\n\\r\\n<p>Name 1<\\/p>\"}', '2023-12-13 15:21:36', '2023-12-13 16:05:43', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `work_attributes`
+--
+
+CREATE TABLE `work_attributes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `work_id` text NOT NULL,
+  `file_1` text NOT NULL,
+  `file_2` text DEFAULT NULL,
+  `file_3` text DEFAULT NULL,
+  `type_1` text NOT NULL,
+  `type_2` text DEFAULT NULL,
+  `type_3` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -653,6 +707,18 @@ ALTER TABLE `words`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `works`
+--
+ALTER TABLE `works`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `work_attributes`
+--
+ALTER TABLE `work_attributes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -690,13 +756,13 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -739,6 +805,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `words`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `works`
+--
+ALTER TABLE `works`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `work_attributes`
+--
+ALTER TABLE `work_attributes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

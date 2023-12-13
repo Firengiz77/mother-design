@@ -13,174 +13,47 @@
 
     @if($slider)
     <div class="banner">
-        @if($slider->video)
+        @if($slider->type == 2)
         <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
-        <source src="{{ asset($slider->image) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+        <source src="{{ asset($slider->file) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
          </video>
       @else
-      <img src="{{ asset($slider->image) }}"/>
+      <img src="{{ asset($slider->file) }}"/>
       @endif
     </div>
     @endif
 
     <div class="project-cards-group grid page-top">
+
+    @foreach ($works as $work)
+      
       <div class="project-link-container">
         <div class="project-card">
           <a href="#" class="project-card-link"></a>
           <div class="project-card-img">
-            <img src="assets/images/image-1.gif" />
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
-            <img src="assets/images/image-2.gif" />
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
+            @if($work->type == 1)
+            <img src="{{ $work->file }}" />
+            @else
+       
             <video autoplay muted loop>
-              <source src="assets/images/video-1.mp4" type="video/mp4" />
+              <source src="{{ $work->file }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"/>
             </video>
+            @endif
           </div>
           <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
+            <p class="project-card-title">{{ $work->name }}</p>
             <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
+              {{ $work->title }}
             </p>
           </div>
         </div>
       </div>
 
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
-            <video autoplay muted loop>
-              <source src="assets/images/video-2.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
+     
+    @endforeach
 
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
-            <img src="assets/images/image-2.gif" />
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
 
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
-            <img src="assets/images/image-1.gif" />
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
 
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
-            <img src="assets/images/image-2.gif" />
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
-            <video autoplay muted loop>
-              <source src="assets/images/video-1.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
-            <video autoplay muted loop>
-              <source src="assets/images/video-2.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-link-container">
-        <div class="project-card">
-          <a href class="project-card-link"></a>
-          <div class="project-card-img">
-            <img src="assets/images/image-2.gif" />
-          </div>
-          <div class="project-card-caption">
-            <p class="project-card-title">Brooklyn Org</p>
-            <p class="project-card-subtitle">
-              Redefining the look and feel of modern philanthropy
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
 
 

@@ -11,7 +11,7 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
                 <div style=" display: flex;align-items: baseline;flex-direction: column;">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> {{ __('Slider') }} </h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> {{ __('Work') }} </h4>
 
               <ul class="d-flex justify-content-end">
                                     @foreach ($all_languages as $a_language)
@@ -42,20 +42,17 @@
                   @endforeach
                   @endif
 
-
-                    <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.slider.update',$slider->id) }}">
+                    <form enctype="multipart/form-data" id="formAccountSettings" method="POST" action="{{ route('admin.work.update',$work->id) }}">
                         @csrf
 
                         <div class="mb-3 col-md-12 ">
                     <label for="type" class="form-label"> {{ __('Type') }} :</label>
                     <select name="type" id="" class="form-control">
                     <option value="0">Seçin</option>
-                      <option value="1" @selected($slider->type == 1) >Şəkil/Gif</option>
-                      <option value="2" @selected($slider->type == 2) >Video</option>
+                      <option value="1" @selected($work->type == 1) >Şəkil/Gif</option>
+                      <option value="2" @selected($work->type == 2) >Video</option>
                     </select>
                   </div>
-
-
 
                         <div class="col-md-12">
                                     <div class="mb-3">
@@ -71,17 +68,20 @@
                                     <img class="mb-3" src="" id="thumbnail">
                                 </div>
                                 <div class="col-md-12">
-                                @if($slider->type == 1)
+                                  @if($work->type == 1)
                                     <div class="mb-3">
                                         <label>{{ __('Current File') }}:</label>
-                                        <img style="width: 80px; object-fit:cover" src="{{ asset($slider->file) }}"
+                                        <img style="width: 80px; object-fit:cover" src="{{ asset($work->file) }}"
                                             alt="">
                                     </div>
                                     @else
                                     <div class="col-md-12">
-                                    <label>{{ __('Current File') }}:</label> <br>
+                                    <div class="mb-3">
+                                        <label>{{ __('Video') }}:</label>
+                                        <input type="file" class="form-control" name="video" >
+                                    </div>
                                     <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
-                                  <source src="{{ asset($slider->video) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+                                  <source src="{{ asset($work->video) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
                                 </video>
 
                                 </div>
@@ -90,37 +90,33 @@
 
     
 
-                           
-                         
 
 
+                  <div class="mb-3 col-md-12 ">
+                    <label for="name" class="form-label"> {{ __('Name') }} :</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      id="name" name="name"  
+                      value="{{ $work->name }}"
+                    />
+                  </div>
 
+                  <div class="mb-3 col-md-12 ">
+                    <label for="title" class="form-label"> {{ __('Title') }} :</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      id="title" name="title"  
+                      value="{{ $work->title }}"
+                    />
+                  </div>
 
-                          <div class="mb-3 col-md-12 ">
-                            <label for="link" class="form-label"> {{ __('Link') }} :</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="link" name="link" 
-                              value="{{ $slider->link }}" 
-                              placeholder="{{ $slider->link }}"
-                            />
+                  <div class="mb-3 col-md-12 ">
+                            <label for="desc" class="form-label">{{ __('Description') }} :</label>
+                            <textarea name="desc" class="form-control"  id="editor" cols="30" rows="10">{{ $work->desc }}</textarea>
                           </div>
-                      
-                                
-                                <div class="mb-3 col-md-12 form-check">
-                                <label class="form-label">{{ __('Status') }}:</label> <br>
-                                <input class="form-check-input" value="1" @checked($slider->status == 1)   type="radio" name="status" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  {{__('Active')}}
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" value="0" @checked($slider->status == 0)   type="radio" name="status" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                {{__('Deactive')}}
-                                </label>
-                           </div>
+
 
 
 

@@ -11,8 +11,8 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\FamilyController;
 use App\Http\Controllers\Admin\WordController;
-
-
+use App\Http\Controllers\Admin\WorkController;
+use App\Http\Controllers\Admin\WorkAttributeController;
 
 
 Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function () {
@@ -73,7 +73,19 @@ Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function ()
     Route::post('word/update/{id}', [WordController::class,'update'])->name('word.update');
     Route::get('word/destroy/{id}',[WordController::class,'destroy'])->name('word.destroy');
 
-
+       // work routes
+       Route::resource('work', WorkController::class);
+       Route::post('work/update/{id}', [WorkController::class,'update'])->name('work.update');
+       Route::get('work/destroy/{id}',[WorkController::class,'destroy'])->name('work.destroy');
+   
+       // work attribute
+       Route::get('work/attribute', [WorkAttributeController::class,'index'])->name('workAttribute.index');
+       Route::get('work/attribute/create/{work_id}', [WorkAttributeController::class,'create'])->name('workAttribute.create');
+       Route::post('work/attribute/store', [WorkAttributeController::class,'store'])->name('workAttribute.store');
+       Route::get('work/attribute/edit/{work_id}/{id}', [WorkAttributeController::class,'edit'])->name('workAttribute.edit');
+       Route::post('work/attribute/update/{id}', [WorkAttributeController::class,'update'])->name('workAttribute.update');
+       Route::get('work/destroy/{id}',[WorkAttributeController::class,'destroy'])->name('work.destroy');
+   
 
 
 });

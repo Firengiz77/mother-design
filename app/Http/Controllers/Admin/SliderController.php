@@ -31,7 +31,13 @@ class SliderController extends Controller
                 ->addIndexColumn()
               
                 ->addColumn('image', function ($row) {
-                    return "<img src='".asset($row->image)."' width='100px'>";
+                    return   $row->type == 1 ?   "<img src='".asset($row->file)."' width='100px'>" 
+                 :
+                  '<video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
+                 <source src="'.asset($row->file).'" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+               </video>'
+                 
+                 ;
                 })
                 ->addColumn('status', function ($row) {
                   if($row->status == 1){
@@ -72,13 +78,16 @@ class SliderController extends Controller
        
             $slider->setTranslation('link', app()->getLocale(), $request->link);
             $slider->status = $request->status;
-            if ($request->file('image')) {
-            $slider->image = $this->crud->common_image('slider',$request,'image');
+            $slider->type = $request->type;
+
+            if($request->type == 1){
+                $slider->file = $this->crud->common_image('slider',$request,'file');
             }
-            if ($request->file('video')) {
-            $path = $request->file('video')->store('video', ['disk' =>'my_files']);
-            $slider->video = $path;
+            else{
+                $path = $request->file('video')->store('video', ['disk' =>'my_files']);
+                $slider->file = $path;
             }
+
             $slider->save();
             
             $notification = [
@@ -101,19 +110,23 @@ class SliderController extends Controller
    
          $slider = Slider::where('id',$id)->first();
  
-       
-            if ($request->file('image')) {
-                File::delete($slider->image);
-                $slider->image = $this->crud->common_image('slider',$request,'image');
+         if($request->file('file')){
+            
+            if ($request->type == 1) {
+                File::delete($slider->file);
+                $slider->file = $this->crud->common_image('slider',$request,'file');
             }
-
-            if ($request->file('video')) {
+            else {
               $path = $request->file('video')->store('video', ['disk' =>'my_files']);
-              $slider->video = $path;
+              $slider->file = $path;
             }
+         }
+           
 
+       
             $slider->setTranslation('link', app()->getLocale(), $request->link);
             $slider->status = $request->status;
+            $slider->type = $request->type;
             $slider->save();
           
             $notification = [
