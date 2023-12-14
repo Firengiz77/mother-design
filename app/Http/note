@@ -12,11 +12,12 @@ Sliderdeki video yeri editde gorunsun +
 Headerdeki deyisken yazilar -> singlede ferqli olacaq bir dene +
 Our Works bolmesi +
 Slider yerini type ile isle +
-
-sekil ve video ucun elave atribut kimi bolme
+sekil ve video ucun elave atribut kimi bolme +
 
 Lang json
 Iconlar
+seliqeye salmaq
+test etmek
 
 
 
@@ -29,8 +30,9 @@ Family +
 Soz yerlerinin qurulmasi +
 Slider  +
 Our works yeri index +
+Headeri singlede nezere almaq +
 
-
-single page
+single page -> attribut yerlerini duzeltmek-> yarimciq qaldi
 Lang json
+test etmek
 

@@ -34,12 +34,17 @@
         <h1>
           <a href="{{  route('index') }}" class="logo"><img src="{{ asset($setting->logo_1) }}"/> <span>Ağıllı Nağıllar</span></a>
         </h1>
-        <div class="introduction-container">
-
-          @foreach($words as $word)
-          <span class="introduction-long descripton">{{ $word->title }}</span>
-          @endforeach
-          
+        <div class="introduction-short">
+          <span class="introduction-long"
+            >{{ $work->title }} </span
+          >
+          <a href="" class="read-more">(Read more)</a>
+        </div>
+        <div class="project-description">
+          <div class="project-description-container">
+           
+           {!! $work->desc !!}
+          </div>
         </div>
     
       </div>

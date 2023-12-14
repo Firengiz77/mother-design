@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 09:18 PM
+-- Host: localhost
+-- Generation Time: Dec 14, 2023 at 11:03 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mother-design`
+-- Database: `mother_design`
 --
 
 -- --------------------------------------------------------
@@ -294,7 +294,11 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (88, 'work-create', 'web', '2023-12-13 15:14:18', '2023-12-13 15:14:18'),
 (89, 'work-list', 'web', '2023-12-13 15:14:25', '2023-12-13 15:14:25'),
 (90, 'work-update', 'web', '2023-12-13 15:14:32', '2023-12-13 15:14:32'),
-(91, 'work-delete', 'web', '2023-12-13 15:14:39', '2023-12-13 15:14:39');
+(91, 'work-delete', 'web', '2023-12-13 15:14:39', '2023-12-13 15:14:39'),
+(92, 'workAttribute-list', 'web', '2023-12-14 02:16:08', '2023-12-14 02:16:08'),
+(93, 'workAttribute-update', 'web', '2023-12-14 02:16:15', '2023-12-14 02:16:15'),
+(94, 'workAttribute-create', 'web', '2023-12-14 02:16:22', '2023-12-14 02:16:22'),
+(95, 'workAttribute-delete', 'web', '2023-12-14 02:16:31', '2023-12-14 02:16:31');
 
 -- --------------------------------------------------------
 
@@ -407,7 +411,11 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (88, 1),
 (89, 1),
 (90, 1),
-(91, 1);
+(91, 1),
+(92, 1),
+(93, 1),
+(94, 1),
+(95, 1);
 
 -- --------------------------------------------------------
 
@@ -586,6 +594,15 @@ CREATE TABLE `work_attributes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `work_attributes`
+--
+
+INSERT INTO `work_attributes` (`id`, `work_id`, `file_1`, `file_2`, `file_3`, `type_1`, `type_2`, `type_3`, `created_at`, `updated_at`) VALUES
+(3, '1', 'uploads/workAttribute/1785241158574956.jpg', NULL, NULL, '1', '0', '0', '2023-12-14 03:24:01', '2023-12-14 03:41:35'),
+(4, '1', 'uploads/workAttribute/1785242228138447.gif', 'uploads/workAttribute/1785242228140610.jpg', NULL, '1', '1', '0', '2023-12-14 03:41:01', '2023-12-14 03:41:01'),
+(5, '1', 'uploads/workAttribute/1785242252485402.gif', 'uploads/workAttribute/1785242252486595.jpg', 'video/0qK0BexbplW4gcscSultOLlLbrDIud2a2YKnA233.mp4', '1', '1', '2', '2023-12-14 03:41:24', '2023-12-14 05:58:49');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -762,7 +779,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -816,7 +833,7 @@ ALTER TABLE `works`
 -- AUTO_INCREMENT for table `work_attributes`
 --
 ALTER TABLE `work_attributes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

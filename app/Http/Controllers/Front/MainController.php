@@ -59,10 +59,10 @@ class MainController extends Controller
         }
     }
 
-    public function singleWork()
+    public function singleWork($id)
     {
-        $slider = Slider::isActive()->first();
-        return view('front.pages.index', compact('slider'));
+       $work = Work::findOrFail($id);
+        return view('front.pages.work', compact('work'));
     }
 
 

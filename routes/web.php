@@ -14,6 +14,6 @@ Route::get('about-us',[MainController::class,'aboutUs'])->name('about');
 Route::get('contact',[MainController::class,'contact'])->name('contact');
 Route::get('/',[MainController::class,'index'])->name('index');
 Route::get('/family',[MainController::class,'family'])->name('family');
-
+Route::get('/work/{id}',[MainController::class,'singleWork'])->name('work');
 
 Route::get('/search/{q?}', [MainController::class, 'search'])->name('search');

@@ -78,10 +78,9 @@
                                     <div class="col-md-12">
                                     <div class="mb-3">
                                         <label>{{ __('Video') }}:</label>
-                                        <input type="file" class="form-control" name="video" >
                                     </div>
                                     <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
-                                  <source src="{{ asset($work->video) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+                                  <source src="{{ asset($work->file) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
                                 </video>
 
                                 </div>

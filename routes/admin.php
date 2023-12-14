@@ -79,12 +79,12 @@ Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function ()
        Route::get('work/destroy/{id}',[WorkController::class,'destroy'])->name('work.destroy');
    
        // work attribute
-       Route::get('work/attribute', [WorkAttributeController::class,'index'])->name('workAttribute.index');
+       Route::get('work/attribute/{work_id}', [WorkAttributeController::class,'index'])->name('workAttribute.index');
        Route::get('work/attribute/create/{work_id}', [WorkAttributeController::class,'create'])->name('workAttribute.create');
-       Route::post('work/attribute/store', [WorkAttributeController::class,'store'])->name('workAttribute.store');
+       Route::post('work/attribute/store/{work_id}', [WorkAttributeController::class,'store'])->name('workAttribute.store');
        Route::get('work/attribute/edit/{work_id}/{id}', [WorkAttributeController::class,'edit'])->name('workAttribute.edit');
        Route::post('work/attribute/update/{id}', [WorkAttributeController::class,'update'])->name('workAttribute.update');
-       Route::get('work/destroy/{id}',[WorkAttributeController::class,'destroy'])->name('work.destroy');
+       Route::get('work/attribute/destroy/{work_id}/{id}',[WorkAttributeController::class,'destroy'])->name('workAttribute.destroy');
    
 
 

@@ -12,4 +12,9 @@ class Work extends Model
 
     public $translatable = ['name','title','desc'];
 
+    public function getWorkAttributes(){
+        return $this->hasMany(WorkAttribute::class,'work_id','id');
+    }
+
+
 }

@@ -42,12 +42,16 @@ class WorkController extends Controller
 
                 ->addColumn('action', function ($row) {
                     $actionBtn = '';
+                    if(Auth::user()->can('workAttribute-list')){
+                        $actionBtn .= ' <a href="' . route('admin.workAttribute.index', $row->id) . '"  class="btn btn-primary btn-sm " >Attributlar</a>';
+                    }
                     if(Auth::user()->can('work-update')){
                     $actionBtn .= '<a href="' . route('admin.work.edit', $row->id) . '" class="edit btn btn-success btn-sm">Edit</a> ';
                     }
                     if(Auth::user()->can('work-delete')){
                         $actionBtn .= ' <a href="' . route('admin.work.destroy', $row->id) . '"   class="delete btn btn-danger btn-sm delete-confirm"  >Delete</a>';
                     }
+                   
                       return $actionBtn;
                 })
                 ->rawColumns(['action','image','status'])
@@ -81,7 +85,7 @@ class WorkController extends Controller
              $work->file = $this->crud->common_image('work',$request,'file');
             }
             else{
-               $path = $request->file('video')->store('work', ['disk' =>'my_files']);
+               $path = $request->file('file')->store('work', ['disk' =>'my_files']);
                $work->file = $path;
             }
             $work->save();
@@ -112,7 +116,7 @@ class WorkController extends Controller
                 $work->file = $this->crud->common_image('work',$request,'file');
                 }
             else{
-                $path = $request->file('video')->store('work', ['disk' =>'my_files']);
+                $path = $request->file('file')->store('work', ['disk' =>'my_files']);
                 $work->file = $path;
             }
         }

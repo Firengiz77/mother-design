@@ -29,14 +29,14 @@
       
       <div class="project-link-container">
         <div class="project-card">
-          <a href="#" class="project-card-link"></a>
+          <a href="{{ route('work',$work->id) }}" class="project-card-link"></a>
           <div class="project-card-img">
             @if($work->type == 1)
             <img src="{{ $work->file }}" />
             @else
        
             <video autoplay muted loop>
-              <source src="{{ $work->file }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"/>
+              <source src="{{ asset($work->file)}}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"/>
             </video>
             @endif
           </div>
