@@ -6,15 +6,15 @@
 
 <div class="filter-container">
       <div class="view-options">
-        <span class="current-view" data-view="grid">Grid</span>
-        <span data-view="list">List</span>
+        <span class="current-view" data-view="grid">{{ __('Grid') }}</span>
+        <span data-view="list">{{ __('List') }}</span>
       </div>
     </div>
 
     @if($slider)
     <div class="banner">
         @if($slider->type == 2)
-        <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
+        <video id="video" loop="" playsinline="" autoplay="" muted="" >
         <source src="{{ asset($slider->file) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
          </video>
       @else
@@ -34,7 +34,6 @@
             @if($work->type == 1)
             <img src="{{ $work->file }}" />
             @else
-       
             <video autoplay muted loop>
               <source src="{{ asset($work->file)}}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"/>
             </video>
@@ -48,14 +47,7 @@
           </div>
         </div>
       </div>
-
-     
     @endforeach
-
-
-
     </div>
-
-
 
 @endsection

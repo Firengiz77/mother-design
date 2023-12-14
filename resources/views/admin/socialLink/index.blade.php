@@ -22,7 +22,6 @@
                       <tr>
                         <th>ID</th>
                         <th>{{ __('Title') }} </th>
-                        <th>{{ __('Status') }} </th>
                         <th>{{ __('Action') }}</th>
                       </tr>
                     </thead>
@@ -73,7 +72,6 @@
               columns: [
                 {data: 'id', name: 'id'},
                   {data: 'title', name: 'title'},
-                  {data: 'status', name: 'status'},
                   {data: 'action', name: 'action'},
               ]
           });

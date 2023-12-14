@@ -47,7 +47,7 @@
                         @csrf
 
                         <div class="mb-3 col-md-12 ">
-                            <label for="email_1" class="form-label">New Business {{ __('Email') }} 1 :</label>
+                            <label for="email_1" class="form-label">{{ __('New Business') }} {{ __('Email') }} 1 :</label>
                             <input
                               class="form-control"
                               type="text"
@@ -57,7 +57,7 @@
                           </div>
 
                           <div class="mb-3 col-md-12 ">
-                            <label for="email_2" class="form-label">New Business {{ __('Email') }} 2:</label>
+                            <label for="email_2" class="form-label">{{ __('New Business') }}{{ __('Email') }} 2:</label>
                             <input
                               class="form-control"
                               type="text"
@@ -68,7 +68,7 @@
                           </div>
 
                           <div class="mb-3 col-md-12 ">
-                            <label for="email_3" class="form-label">Talent {{ __('Email') }} 1 :</label>
+                            <label for="email_3" class="form-label">{{ __('Talent') }} {{ __('Email') }} 1 :</label>
                             <input
                               class="form-control"
                               type="text"
@@ -80,7 +80,7 @@
 
 
                           <div class="mb-3 col-md-12 ">
-                            <label for="email_4" class="form-label">Talent {{ __('Email') }} 2 :</label>
+                            <label for="email_4" class="form-label">{{ __('Talent') }} {{ __('Email') }} 2 :</label>
                             <input
                               class="form-control"
                               type="text"

@@ -68,20 +68,12 @@
                                 </div>
 
 
-
-
-                          <div class="mb-3 col-md-12 ">
-                            <label for="title" class="form-label"> {{ __('Title') }} :</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="title" name="title" 
-                              value="{{ $about->title }}" 
-                              placeholder="{{ $about->title }}"
-                            />
+                                <div class="mb-3 col-md-12 ">
+                            <label for="title" class="form-label">{{ __('Title') }} :</label>
+                            <textarea name="title" class="form-control"  id="editor" cols="30" rows="10">{{ $about->title }}</textarea>
                           </div>
-                      
-                                
+
+                          
                           
                                <button type="submit" class="btn btn-outline-secondary account-image-reset mb-4 mt-2">
                                  <i class="bx bx-reset d-block d-sm-none"></i>

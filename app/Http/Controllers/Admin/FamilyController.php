@@ -41,7 +41,7 @@ class FamilyController extends Controller
                     $actionBtn .= '<a href="' . route('admin.family.edit', $row->id) . '" class="edit btn btn-success btn-sm">Edit</a> ';
                     }
                     if(Auth::user()->can('family-delete')){
-                        $actionBtn .= ' <a href="' . route('admin.familt.destroy', $row->id) . '"   class="delete btn btn-danger btn-sm delete-confirm"  >Delete</a>';
+                        $actionBtn .= ' <a href="' . route('admin.family.destroy', $row->id) . '"   class="delete btn btn-danger btn-sm delete-confirm"  >Delete</a>';
                     }
 
                       return $actionBtn;
@@ -69,7 +69,7 @@ class FamilyController extends Controller
             $family->setTranslation('name', app()->getLocale(), $request->name);
             $family->setTranslation('profession', app()->getLocale(), $request->profession);
             $family->setTranslation('desc', app()->getLocale(), $request->desc);
-            $family->instagram = $request->instagram;
+            $family->link = $request->link;
             $family->image = $this->crud->common_image('family',$request,'image');
             $family->save();
           
@@ -104,6 +104,7 @@ class FamilyController extends Controller
             $family->setTranslation('desc', app()->getLocale(), $request->desc);
             $family->link = $request->link;
 
+            $family->save();
           
             $notification = [
                 'message' => __('Family successfully updated'),

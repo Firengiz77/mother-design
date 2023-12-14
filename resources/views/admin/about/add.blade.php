@@ -65,17 +65,13 @@
                      </div>
                            <img class="mb-3" src="" id="thumbnail">
                  </div>
-                 
-
+            
+                  
                   <div class="mb-3 col-md-12 ">
-                    <label for="title" class="form-label"> {{ __('Title') }} :</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      id="title" name="title"  
-                      placeholder="{{ __('Title') }} "
-                    />
-                  </div>
+                            <label for="title" class="form-label">{{ __('Title') }} :</label>
+                            <textarea name="title" class="form-control"  id="editor" cols="30" rows="10"></textarea>
+                          </div>
+
 
                 
                    <button type="submit" class="btn btn-outline-secondary account-image-reset mb-4 mt-2">
@@ -83,7 +79,6 @@
                      <span class="d-none d-sm-block">{{ __('Create') }}</span>
                    </button>
 
-                   
                  </div>
                </div>
                 </form>

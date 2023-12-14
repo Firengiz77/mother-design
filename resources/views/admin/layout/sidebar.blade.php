@@ -30,6 +30,35 @@
             </li>
 
       
+            @can(['role-list','permission-list'])
+            <li class="menu-item @if(Route::is('admin.roles') || Route::is('admin.roles')) active @endif">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="fa fa-rocket menu-icon" aria-hidden="true"></i>
+                <div data-i18n="Account Settings"> {{ __('Roles') }} {{ __('and')}} {{__('Permissions')}} </div>
+              </a>
+              <ul class="menu-sub">
+                @can('role-list')
+                <li class="menu-item">
+                  <a href="{{route('admin.roles.index')}}" class="menu-link">
+                  <i class="fa fa-users menu-icon" aria-hidden="true"></i>
+                    <div data-i18n="Roles"> {{ __('Roles') }} </div>
+                  </a>
+                </li>
+                @endcan
+                @can('permission-list')
+                <li class="menu-item">
+                  <a href="{{route('admin.permissions.index')}}" class="menu-link">
+                  <i class="fa fa-check-square-o menu-icon" aria-hidden="true"></i>
+                    <div data-i18n="Permissions"> {{ __('Permissions') }} </div>
+                  </a>
+                </li>
+                @endcan
+
+              </ul>
+            </li>
+            @endcan
+
+
             <li class="menu-item @if(Route::is('admin.roles') || Route::is('admin.roles')) active @endif">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="fa fa-sliders menu-icon" aria-hidden="true"></i>
@@ -40,11 +69,13 @@
               @can('contact-list')
                 <li class="menu-item">
                   <a href="{{route('admin.setting.edit',1)}}" class="menu-link">
-                  <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
-                    <div data-i18n="Contact"> {{ __('Site Settings') }} </div>
+                  <i class="fa fa-file menu-icon" aria-hidden="true"></i>
+
+                    <div data-i18n="Site Setting"> {{ __('Site Settings') }} </div>
                   </a>
                 </li>
                 @endcan
+
 
                 @can('contact-list')
                 <li class="menu-item">
@@ -75,12 +106,20 @@
             </li>
       
 
-
-
+            @can('slider-list')
+                <li class="menu-item">
+                  <a href="{{route('admin.slider.index')}}" class="menu-link">
+                  <i class="fa fa-file-image-o menu-icon" aria-hidden="true"></i>
+                    <div data-i18n="Slider"> {{ __('Slider') }} </div>
+                  </a>
+                </li>
+                @endcan
+  
+                
             @can('family-list')
                 <li class="menu-item">
                   <a href="{{route('admin.family.index')}}" class="menu-link">
-                  <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                  <i class="fa fa-users menu-icon" aria-hidden="true"></i>
                     <div data-i18n="Family"> {{ __('Family') }} </div>
                   </a>
                 </li>
@@ -89,69 +128,29 @@
                 @can('work-list')
                 <li class="menu-item">
                   <a href="{{route('admin.work.index')}}" class="menu-link">
-                  <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                  <i class="fa fa-briefcase menu-icon" aria-hidden="true"></i>
                     <div data-i18n="Work"> {{ __('Work') }} </div>
                   </a>
                 </li>
                 @endcan
                 
 
-
                 
                 @can('word-list')
                 <li class="menu-item">
                   <a href="{{route('admin.word.index')}}" class="menu-link">
-                  <i class="fa fa-file-text-o menu-icon" aria-hidden="true"></i>
+                  <i class="fa fa-sort-alpha-desc menu-icon" aria-hidden="true"></i>
                     <div data-i18n="Word"> {{ __('Word') }} </div>
                   </a>
                 </li>
                 @endcan
 
+            
 
 
-            @can(['role-list','permission-list'])
-            <li class="menu-item @if(Route::is('admin.roles') || Route::is('admin.roles')) active @endif">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="fa fa-rocket menu-icon" aria-hidden="true"></i>
-                <div data-i18n="Account Settings"> {{ __('Roles') }} {{ __('and')}} {{__('Permissions')}} </div>
-              </a>
-              <ul class="menu-sub">
-                @can('role-list')
-                <li class="menu-item">
-                  <a href="{{route('admin.roles.index')}}" class="menu-link">
-                  <i class="fa fa-users menu-icon" aria-hidden="true"></i>
-                    <div data-i18n="Roles"> {{ __('Roles') }} </div>
-                  </a>
-                </li>
-                @endcan
-                @can('permission-list')
-                <li class="menu-item">
-                  <a href="{{route('admin.permissions.index')}}" class="menu-link">
-                  <i class="fa fa-check-square-o menu-icon" aria-hidden="true"></i>
-                    <div data-i18n="Permissions"> {{ __('Permissions') }} </div>
-                  </a>
-                </li>
-                @endcan
+         
 
-              </ul>
-            </li>
-            @endcan
-
-
-        
-
-
-             @can('slider-list')
-                <li class="menu-item">
-                  <a href="{{route('admin.slider.index')}}" class="menu-link">
-                  <i class="fa fa-file-image-o menu-icon" aria-hidden="true"></i>
-                    <div data-i18n="Slider"> {{ __('Slider') }} </div>
-                  </a>
-                </li>
-                @endcan
-
-  
-
+               
             <li class="menu-item @if(Route::is('admin.account') || Route::is('admin.register')) active @endif">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
@@ -176,6 +175,7 @@
 
               </ul>
             </li>
+         
 
 
 

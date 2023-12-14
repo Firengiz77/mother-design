@@ -36,15 +36,7 @@ class SocialLinkController extends Controller
                 ->addColumn('title', function ($row) {
                     return $row->title;
                 })
-                ->addColumn('status', function ($row) {
-                    if($row->status == 1){
-                      return '<a href="' . route('admin.socialLink.status',$row->id) . '" > <span class="badge bg-label-success">'. __('Active').'  </span>  </a>'  ;
-                    }
-                    else{
-                      return  '<a href="' . route('admin.socialLink.status', $row->id) . '" > <span class="badge bg-label-danger">'. __('Deactive').'  </span>  </a>' ;
-                 
-                    }
-                       })
+           
 
                 ->addColumn('action', function ($row) {
                     $actionBtn = '';
@@ -70,16 +62,13 @@ class SocialLinkController extends Controller
         return view('admin.socialLink.add');
     }
 
-    public function store(Request $request,SocialLinkRequest $socialRequest)
+    public function store(Request $request)
     {
        
-        $validatedData = $socialRequest->validated();
-        if($validatedData){
     
              $social = new SocialLink();
        
             $social->setTranslation('title', app()->getLocale(), $request->title);
-            $social->status = $request->status;
             $social->link = $request->link;
 
             if ($request->file('icon')) {
@@ -93,10 +82,7 @@ class SocialLinkController extends Controller
                 'alert-type' => 'success'
             ];
             return redirect()->route('admin.socialLink.index')->with($notification);
-        }
-            else{
-                return redirect()->route('admin.socialLink.index')->with('Data Must be filled');
-            }
+      
     }
 
   
@@ -115,9 +101,8 @@ class SocialLinkController extends Controller
  
             $social->setTranslation('title', app()->getLocale(), $request->title);
             $social->link = $request->link;
-            $social->status = $request->status;
    
-            if ($request->file('image')) {
+            if ($request->file('icon')) {
                 File::delete($social->icon);
                 $social->icon = $this->crud->common_image('social',$request,'icon');
             }
@@ -140,7 +125,7 @@ class SocialLinkController extends Controller
             'message' => __('SM Link successfully destroyed'),
             'alert-type' => 'success'
         );
-        return redirect()->route('admin.socialLinks.index')->with($notification);
+        return redirect()->route('admin.socialLink.index')->with($notification);
     }
 
     

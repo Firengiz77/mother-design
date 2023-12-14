@@ -101,33 +101,18 @@ class WorkAttributeController extends Controller
             $work->type_2 = $request->type_2;
             $work->type_3 = $request->type_3;
 
-            if ( $request->type_1 == 1) {
+         
              $work->file_1 = $this->crud->common_image('workAttribute',$request,'file_1');
-            }
-            else{
-               $path = $request->file('file_1')->store('video', ['disk' =>'my_files']);
-               $work->file_1 = $path;
-            }
+          
 
 
             if($request->type_2 != 0){
-            if ( $request->type_2 == 1) {
                 $work->file_2 = $this->crud->common_image('workAttribute',$request,'file_2');
-            }
-            else{
-                $path = $request->file('file_2')->store('video', ['disk' =>'my_files']);
-                $work->file_2 = $path;
-            }
-        }
+              }
 
                if($request->type_3 != 0){
-            if ( $request->type_3 == 1) {
                 $work->file_3 = $this->crud->common_image('workAttribute',$request,'file_3');
-               }
-               else{
-                  $path = $request->file('file_3')->store('video', ['disk' =>'my_files']);
-                  $work->file_3 = $path;
-            }
+       
         }
    
 
@@ -154,37 +139,23 @@ class WorkAttributeController extends Controller
         $work = WorkAttribute::findorFail($id);
  
         if($request->file('file_1')){
-            if ($request->type_1 == 1) {
                 File::delete($work->file_1);
                 $work->file_1 = $this->crud->common_image('workAttribute',$request,'file_1');
-                }
-            else{
-                $path = $request->file('file_1')->store('video', ['disk' =>'my_files']);
-                $work->file_1 = $path;
-            }
+                
+           
         }
 
      
     
         if($request->file('file_2') && $request->type_2 != 0){
-            if ($request->type_2 == 1) {
                 File::delete($work->file_2);
                 $work->file_2 = $this->crud->common_image('workAttribute',$request,'file_2');
-                }
-            else{
-                $path = $request->file('file_2')->store('video', ['disk' =>'my_files']);
-                $work->file_2 = $path;
-            }
+                
         }
         if($request->file('file_3') && $request->type_3 != 0){
-            if ($request->type_3 == 1 ) {
                 File::delete($work->file_3);
                 $work->file_3 = $this->crud->common_image('workAttribute',$request,'file_3');
-                }
-            else{
-                $path = $request->file('file_3')->store('video', ['disk' =>'my_files']);
-                $work->file_3 = $path;
-            }
+                
         }
 
 

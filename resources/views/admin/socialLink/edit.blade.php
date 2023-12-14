@@ -95,22 +95,7 @@
                             />
                           </div>
                          
-                                
-                                <div class="mb-3 col-md-12 form-check">
-                                <label class="form-label">{{ __('Status') }}:</label> <br>
-                                <input class="form-check-input" value="1" @checked($social->status == 1)   type="radio" name="status" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  {{__('Active')}}
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" value="0" @checked($social->status == 0)   type="radio" name="status" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                {{__('Deactive')}}
-                                </label>
-                           </div>
-
-
+                       
 
                                <button type="submit" class="btn btn-outline-secondary account-image-reset mb-4 mt-2">
                                  <i class="bx bx-reset d-block d-sm-none"></i>

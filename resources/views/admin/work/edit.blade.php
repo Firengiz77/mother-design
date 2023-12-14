@@ -79,7 +79,7 @@
                                     <div class="mb-3">
                                         <label>{{ __('Video') }}:</label>
                                     </div>
-                                    <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
+                                    <video id="video" loop="" playsinline="" autoplay="" muted=""  >
                                   <source src="{{ asset($work->file) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
                                 </video>
 

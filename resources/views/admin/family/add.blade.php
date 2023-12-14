@@ -90,17 +90,14 @@
 
 
                   <div class="mb-3 col-md-12">
-                    <label for="instagram" class="form-label">{{ __('Link') }} :</label>
-                    <input required
+                    <label for="link" class="form-label">{{ __('Link') }} :</label>
+                    <input 
                       class="form-control"
                       type="text"
-                      id="instagram" name="instagram"  
+                      id="link" name="link"  
                       placeholder="{{ __('Link') }}"
                     />
                   </div>
-
-
-
 
 
                    <div class="mb-3 col-md-12 ">

@@ -13,11 +13,11 @@ Headerdeki deyisken yazilar -> singlede ferqli olacaq bir dene +
 Our Works bolmesi +
 Slider yerini type ile isle +
 sekil ve video ucun elave atribut kimi bolme +
-
-Lang json
-Iconlar
-seliqeye salmaq
-test etmek
+test etmek +
+Lang json +
+seliqeye salmaq +
+Iconlar +
+Admin paneli seliqeli doldurmaq
 
 
 
@@ -31,8 +31,8 @@ Soz yerlerinin qurulmasi +
 Slider  +
 Our works yeri index +
 Headeri singlede nezere almaq +
+single page -> attribut yerlerini duzeltmek-> +
+test etmek +
+Lang json +
 
-single page -> attribut yerlerini duzeltmek-> yarimciq qaldi
-Lang json
-test etmek
 

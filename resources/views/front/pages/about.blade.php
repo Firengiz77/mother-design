@@ -10,7 +10,7 @@
        @foreach($about as $key => $item)
           <div class="locations-image {{ $key == 0 ? 'current-slide' : '' }}">
             <img src="{{ asset($item->image) }}"/>
-            <p class="locations-image-title">{{ $item->title }}</p>
+            <p class="locations-image-title">{!! $item->title !!}</p>
           </div>
        @endforeach
 
@@ -24,10 +24,10 @@
 
       <ul class="about-menu-list">
         <li>
-            <a href="{{ route('family') }}" target=""> Who we are </a>
+            <a href="{{ route('family') }}" target=""> {{__('Who we are')}} </a>
         </li>
         <li>
-            <a href="{{ route('index') }}" target=""> What we do </a>
+            <a href="{{ route('index') }}" target=""> {{ __('What we do') }} </a>
         </li>
       </ul>
     </div>

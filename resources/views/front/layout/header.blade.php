@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('/front/assets/css/main.css')}}" />
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('/front/assets/images/favicon/favicon-32x32.png')}}" />
-    <title>Agilli Nagillar</title>
+    <title>{{ __('Clever Tales') }}</title>
   </head>
 
   <body>
@@ -17,22 +17,22 @@
         <ul class="header-menu">
        
           <li class="{{ Route::is('index')  ? 'active' : '' }}">
-            <a href="{{ route('index')  }}">Work</a>
+            <a href="{{ route('index')  }}">{{ __('Work') }}</a>
           </li>
           <li class="{{ Route::is('about')  ? 'active' : '' }}">
-            <a href="{{ route('about') }}">About</a>
+            <a href="{{ route('about') }}">{{ __('About') }}</a>
           </li>
           <li class="{{ Route::is('family')  ? 'active' : '' }}">
-            <a href="{{ route('family') }}">Family</a>
+            <a href="{{ route('family') }}">{{ __('Family') }}</a>
           </li>
           <li class="{{ Route::is('contact')  ? 'active' : '' }}">
-            <a href="{{ route('contact') }}">Contact</a>
+            <a href="{{ route('contact') }}">{{ __('Contact') }}</a>
           </li>
         </ul>
       </nav>
       <div class="header-introduction">
         <h1>
-          <a href="{{  route('index') }}" class="logo"><img src="{{ asset($setting->logo_1) }}"/> <span>Ağıllı Nağıllar</span></a>
+          <a href="{{  route('index') }}" class="logo"><img src="{{ asset($setting->logo_1) }}"/> <span>{{ __('Clever Tales') }}</span></a>
         </h1>
         <div class="introduction-container">
 

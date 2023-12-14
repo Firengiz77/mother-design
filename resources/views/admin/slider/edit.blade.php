@@ -50,8 +50,8 @@
                     <label for="type" class="form-label"> {{ __('Type') }} :</label>
                     <select name="type" id="" class="form-control">
                     <option value="0">Seçin</option>
-                      <option value="1" @selected($slider->type == 1) >Şəkil/Gif</option>
-                      <option value="2" @selected($slider->type == 2) >Video</option>
+                      <option value="1" @selected($slider->type == 1)> Şəkil/Gif </option>
+                      <option value="2" @selected($slider->type == 2) > Video </option>
                     </select>
                   </div>
 
@@ -80,7 +80,7 @@
                                     @else
                                     <div class="col-md-12">
                                     <label>{{ __('Current File') }}:</label> <br>
-                                    <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
+                                    <video id="video" loop="" playsinline="" autoplay="" muted=""  >
                                   <source src="{{ asset($slider->video) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
                                 </video>
 

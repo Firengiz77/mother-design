@@ -11,7 +11,7 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
                 <div style=" display: flex;align-items: baseline;flex-direction: column;">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> {{ __('SM Link') }} </h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> {{ __('Family') }} </h4>
 
               <ul class="d-flex justify-content-end">
                                     @foreach ($all_languages as $a_language)
@@ -95,12 +95,12 @@
 
 
                   <div class="mb-3 col-md-12">
-                    <label for="instagram" class="form-label">{{ __('Link') }} :</label>
+                    <label for="link" class="form-label">{{ __('Link') }} :</label>
                     <input required
                       class="form-control"
                       type="text"
-                      id="instagram" name="instagram"  
-                      value="{{ $family->instagram }}"
+                      id="link" name="link"  
+                      value="{{ $family->link }}"
                     />
                   </div>
 

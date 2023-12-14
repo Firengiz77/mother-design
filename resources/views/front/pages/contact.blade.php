@@ -12,15 +12,15 @@
           <a href="tel:{{ str_replace(' ','',$contact->phone) }}" class="contact-link">{{ $contact->phone }}</a>
 
           <div class="contact-info">
-            <p class="contact-subtitle">New business enquiries:</p>
+            <p class="contact-subtitle">{{ __('New business enquiries') }}:</p>
             <a href="mailto:{{ $contact->email_1}}" class="contact-link">{{ $contact->email_1}}</a>
-            <a href="mailto:{{$contact->email_2}}" class="contact-link">ilham@agillinagillar.com</a>
+            <a href="mailto:{{$contact->email_2}}" class="contact-link">{{ $contact->email_2 }}</a>
           </div>
           
           <div class="contact-info">
-            <p class="contact-subtitle">Talent business enquiries:</p>
+            <p class="contact-subtitle">{{ __('Talent business enquiries') }}:</p>
             <a href="mailto:{{$contact->email_3}}" class="contact-link"> {{$contact->email_3}}</a>
-            <a href="mailto:{{$contact->email_4}}" class="contact-link">gunay@agillinagillar.com</a>
+            <a href="mailto:{{$contact->email_4}}" class="contact-link">{{ $contact->email_4 }}</a>
           </div>
         </div>
 

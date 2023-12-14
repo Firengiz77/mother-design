@@ -30,7 +30,9 @@
                 <div>
                {!!   $item->desc !!}
                 </div>
-                <a href="{{ $item->link }}" target="_blank">Instagram</a>
+                @if($item->link !== null)
+                <a href="{{ $item->link }}" target="_blank">{{ __('Instagram') }}</a>
+                @endif
               </div>
             </div>
            

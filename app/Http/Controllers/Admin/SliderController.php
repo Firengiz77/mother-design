@@ -33,7 +33,7 @@ class SliderController extends Controller
                 ->addColumn('image', function ($row) {
                     return   $row->type == 1 ?   "<img src='".asset($row->file)."' width='100px'>" 
                  :
-                  '<video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
+                  '<video id="video" loop="" playsinline="" autoplay="" muted=""  style="width:100px">
                  <source src="'.asset($row->file).'" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
                </video>'
                  
@@ -80,13 +80,8 @@ class SliderController extends Controller
             $slider->status = $request->status;
             $slider->type = $request->type;
 
-            if($request->type == 1){
-                $slider->file = $this->crud->common_image('slider',$request,'file');
-            }
-            else{
-                $path = $request->file('video')->store('video', ['disk' =>'my_files']);
-                $slider->file = $path;
-            }
+            $slider->file = $this->crud->common_image('slider',$request,'file');
+           
 
             $slider->save();
             
@@ -111,19 +106,10 @@ class SliderController extends Controller
          $slider = Slider::where('id',$id)->first();
  
          if($request->file('file')){
-            
-            if ($request->type == 1) {
                 File::delete($slider->file);
                 $slider->file = $this->crud->common_image('slider',$request,'file');
-            }
-            else {
-              $path = $request->file('video')->store('video', ['disk' =>'my_files']);
-              $slider->file = $path;
-            }
          }
-           
 
-       
             $slider->setTranslation('link', app()->getLocale(), $request->link);
             $slider->status = $request->status;
             $slider->type = $request->type;

@@ -37,7 +37,7 @@ class AboutController extends Controller
                 ->addIndexColumn()
 
                 ->addColumn('title', function ($row) {
-                    return $row->title;
+                    return substr( $row->title,0,50) . ' ...';
                 })
 
                 ->addColumn('image', function ($row) {
@@ -54,7 +54,7 @@ class AboutController extends Controller
                          }
                       return $actionBtn;
                 })
-                ->rawColumns(['action','image','status'])
+                ->rawColumns(['action','image','title'])
                 ->make(true);
         
         }

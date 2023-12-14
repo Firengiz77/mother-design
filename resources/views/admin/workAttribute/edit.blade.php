@@ -69,7 +69,7 @@
                                     <div class="mb-3">
                                         <label>{{ __('Video') }} 1:</label>
                                     </div>
-                                    <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
+                                    <video id="video" loop="" playsinline="" autoplay="" muted=""  >
                                     <source src="{{ asset($workAttribute->file_1) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
                                    </video>
                                
@@ -113,7 +113,7 @@
                                     <div class="mb-3">
                                         <label>{{ __('Video') }} 2:</label>
                                     </div>
-                                    <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
+                                    <video id="video" loop="" playsinline="" autoplay="" muted=""  >
                                   <source src="{{ asset($workAttribute->file_2) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
                                 </video>
 
@@ -157,7 +157,7 @@
                                     <div class="mb-3">
                                         <label>{{ __('Video') }} 3:</label>
                                     </div>
-                                    <video id="video" loop="" playsinline="" autoplay="" muted="" controls="controls">
+                                    <video id="video" loop="" playsinline="" autoplay="" muted=""  >
                                   <source src="{{ asset($workAttribute->file_3) }}" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
                                 </video>
 

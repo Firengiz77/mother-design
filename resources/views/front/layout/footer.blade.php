@@ -8,7 +8,6 @@
           </div>
 
           <div class="footer-column-right">
-
           @foreach($social as $link)
             <a href="{{ $link->link }}" title="{{ $link->title }}" target="_blank">
               <img src="{{ asset($link->icon) }}" alt="{{ $link->title }}">

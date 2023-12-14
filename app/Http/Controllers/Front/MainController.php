@@ -41,27 +41,11 @@ class MainController extends Controller
     }
 
 
-    
-    public function search(Request $request)
-    {
-         if ($request->q === null || $request->q === "" || $request->q === " " ) {
-        
-         return response()->json(['error' => 'Mehsul Tapilmadi']);
-         }
-        
-        $name = 'name';
-        if ($request->q) {
-            $product_results = Product::where($name, 'LIKE', "%$request->q%")->orWhere('sku', 'LIKE', "%$request->q%")
-            ->take(5)->orderByDesc('id')->get();
-                
-         return view('front.widget.search', compact('product_results'));
-              
-        }
-    }
 
     public function singleWork($id)
     {
        $work = Work::findOrFail($id);
+     
         return view('front.pages.work', compact('work'));
     }
 
